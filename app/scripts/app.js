@@ -3,7 +3,7 @@
 /**
  * @ngdoc overview
  * @name recommenuCmsApp
- * @description
+ * @description - CMS for Menu uploading for restaurant clients
  * # recommenuCmsApp
  *
  * Main module of the application.
@@ -16,7 +16,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider

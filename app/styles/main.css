@@ -4,6 +4,17 @@ body {
   padding-bottom: 20px;
 }
 
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+/* Sidebar for custom nav */
+.sidenav {
+  position: fixed;
+  left:0;
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background: #eeeeee
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -34,7 +45,11 @@ body {
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    max-width: 730px;
+    position: fixed;
+    top: 0;
+    left: 300px;
+    max-width: 830px;
+    width: 70%;
   }
 }
 .container-narrow > hr {
@@ -76,4 +91,9 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+/*  Responsive: Phones */;
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Styles */
 }

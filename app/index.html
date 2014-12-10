@@ -22,6 +22,7 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
+      <!-- HEADER START -->
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a ng-href="#">Home</a></li>
@@ -30,6 +31,18 @@
         </ul>
         <h3 class="text-muted">recommenuCms</h3>
       </div>
+      <!-- HEADER END -->
+      
+      <!-- SIDENAV START -->
+      <div class="sidenav" ng-controller="SideCtrl">
+        <h1>SideNav</h1>
+        <div accordion close-others="true">
+          <div accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+          This content is straight in the template.
+          </div>
+        </div>       
+      </div>
+      <!-- END SIDENAV -->
 
       <div ng-view=""></div>
 
@@ -69,6 +82,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -76,6 +90,7 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/side.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -1,0 +1,30 @@
+<div ng-controller="LoginCtrl" id="login-page">
+    <div>
+        <form class="form-login" action="" ng-submit="signIn(user, pw)">
+            <h2 class="form-login-heading"><b>Recommenu Member CMS Login</b></h2>
+            <div class="login-wrap">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                    <text class="fa fa-user"></span>
+                    <input type="text" class="form-control" placeholder="Username" ng-model="user" autofocus>
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                    <text class="fa fa-crosshairs"></span>
+                    <input type="password" class="form-control" ng-model="pw" placeholder="Password">
+                </div>
+                <div class="row top15">
+                    <div class="col-md-3">
+                        <button class="btn btn-black" type="submit"> LOG IN</button>  
+                    </div>
+                    <div class="col-md-4">
+                        <h5 style="color:#d9534f; font-weight:bold;">{{logging}}</h5>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+        <p>{{outcome}}</p>
+    </div>
+</div>

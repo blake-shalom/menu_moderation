@@ -25,29 +25,35 @@
       <!-- HEADER START -->
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
         </ul>
-        <h3 class="text-muted">recommenuCms</h3>
+        <h3 class="text-muted">Recommenu Menu Manager</h3>
       </div>
       <!-- HEADER END -->
       
       <!-- SIDENAV START -->
-      <div class="sidenav" ng-controller="SideCtrl">
+      <div class="sidenav" ng-controller="SideCtrl" ng-cloak ng-hide="true"> <!-- HIDDEN -->
         <h1>SideNav</h1>
-        <div accordion close-others="true">
-          <div accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-          This content is straight in the template.
+        <section id="menu-sidebar">
+          <h3>Active Menus</h3>
+          <div accordion ng-cloak close-others="true">
+            <div ng-repeat="menu in menus">
+              <div accordion-group heading="{{menu.name}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                <div ng-repeat="section in menu.sections" data-drop="true" ng-model="menu.sections" jqyoui-droppable="{index: {{$index}}}">
+                  <div class="grab" data-drag="true" ng-model="menu.sections" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}">
+                    <p>{{section}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>       
+        </section>       
       </div>
       <!-- END SIDENAV -->
 
       <div ng-view=""></div>
 
       <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p><span class="glyphicon glyphicon-heart"></span> from Recommenu</p>
       </div>
     </div>
 
@@ -83,6 +89,10 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-dragdrop/src/angular-dragdrop.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/restangular/dist/restangular.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -91,6 +101,9 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/side.js"></script>
+        <script src="scripts/services/menu.js"></script>
+        <script src="scripts/services/auth.js"></script>
+        <script src="scripts/controllers/login.js"></script>
         <!-- endbuild -->
 </body>
 </html>

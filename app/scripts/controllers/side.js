@@ -9,5 +9,5 @@
  */
 angular.module('recommenuCmsApp')
   .controller('SideCtrl', function ($scope) {
-    $scope.menus = [{name: 'lunch'}, {name: 'dinner'}];
+    $scope.menus = [{name: 'lunch', sections:['apps', 'sandwiches', 'desserts']}, {name: 'dinner', sections:['food']}];
   });

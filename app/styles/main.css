@@ -4,6 +4,16 @@ body {
   padding-bottom: 20px;
 }
 
+/* Row vertical spacers */
+.top5 { margin-top:5px; }
+.top7 { margin-top:7px; }
+.top10 { margin-top:10px; }
+.top15 { margin-top:15px; }
+.top17 { margin-top:17px; }
+.top30 { margin-top:30px; }
+.top80 { margin-top:80px; }
+.top110 { margin-top:110px; }
+
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 /* Sidebar for custom nav */
 .sidenav {
@@ -37,9 +47,23 @@ body {
 
 /* Custom page footer */
 .footer {
+  margin-top: 50px;
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+}
+
+.grab {
+  cursor: grab;
+}
+
+/* Top of the side-nav */
+
+#menu-sidebar {
+  width: 100%;
+  min-height: 425px;
+  border-bottom: solid #000000;
+  padding-left: 15px;
 }
 
 /* Customize container */
@@ -72,6 +96,77 @@ body {
 }
 .marketing p + h4 {
   margin-top: 28px;
+}
+
+.member-login {
+    positon: left;
+}
+
+/* Login Style */
+.form-login {
+  max-width: 550px;
+  margin: 100px auto 0;
+  margin-bottom: 100px;
+  background: #fff;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+.form-login h2.form-login-heading {
+  margin: 0;
+  padding: 25px 20px;
+  text-align: center;
+  background: #000;
+  border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  color: #fff;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.login-wrap .form-control {
+  border-color: #000;
+  background: #fff;
+  color: #000;
+}
+
+
+.login-wrap .input-group .input-group-addon {
+  border-color: #000;
+  color: #000;
+  background: #fff;
+  
+}
+
+.login-wrap .checkbox {
+  color: #000;
+  font-size: 15px;
+  text-transform: uppercase;
+  
+}
+
+.login-wrap .checkbox .btn {
+  background: #000;
+  width: 100px;
+  color: #fff;
+}
+
+.login-wrap {
+  padding: 20px;
+  background: #E0E0E0;
+  color: #000;
+  
+}
+
+.login-wrap .registration {
+  text-align: center;
+}
+
+.login-social-link {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 
 /* Responsive: Portrait tablets and up */

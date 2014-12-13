@@ -52,4 +52,24 @@ angular
       .otherwise({
         redirectTo: '/login'
       });
+  })
+  .run(function ($rootScope, $location, auth) {
+
+    // enumerate routes that don't need authentication
+    var routesThatDontRequireAuth = ['/login'];
+
+    // check if current location matches route  
+    var routeClean = function (route) {
+      return window._.find(routesThatDontRequireAuth,
+        function (noAuthRoute) {
+          return window._.str.startsWith(route, noAuthRoute);
+        });
+    };
+    $rootScope.$on('$routeChangeStart', function () {
+      // if route requires auth and user is not logged in
+      if (!routeClean($location.url()) && !auth.isLogged) {
+        // redirect back to login
+        $location.path('/login');
+      }
+    });
   });

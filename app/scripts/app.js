@@ -21,10 +21,24 @@ angular
     'ngDragDrop',
     'restangular'
   ])
-  .config(function ($routeProvider, RestangularProvider) {
+  .config(function ($routeProvider, $locationProvider, RestangularProvider) {
     /* Restangular Config */
     RestangularProvider.setBaseUrl('http://recommenu-test-api.herokuapp.com');
     RestangularProvider.configuration.requestSuffix = '&';
+    // add a response intereceptor
+    RestangularProvider.addResponseInterceptor(function(data, operation) {
+    $locationProvider.html5Mode(true);
+    var extractedData;
+    // .. to look for getList operations
+    if (operation === 'getList') {
+      // .. and handle the data and meta data
+      extractedData = data.results;
+      extractedData.meta = data;
+    } else {
+      extractedData = data;
+    }
+    return extractedData;
+    });
 
     $routeProvider
       .when('/login', {

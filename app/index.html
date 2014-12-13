@@ -23,15 +23,18 @@
     <!-- Add your site or application content here -->
     <div class="container">
       <!-- HEADER START -->
-      <div class="header">
+      <div class="header" ng-controller="HeaderCtrl">
         <ul class="nav nav-pills pull-right">
+          <li>
+            <div class="btn" ng-show="needsLogout" ng-click="logout()">Log Out</div>
+          </li>
         </ul>
         <h3 class="text-muted">Recommenu Menu Manager</h3>
       </div>
       <!-- HEADER END -->
       
       <!-- SIDENAV START -->
-      <div class="sidenav" ng-controller="SideCtrl" ng-cloak ng-hide="true"> <!-- HIDDEN -->
+      <div class="sidenav" ng-controller="SideCtrl" ng-cloak ng-show="selectedClient != null">
         <h1>SideNav</h1>
         <section id="menu-sidebar">
           <h3>Active Menus</h3>
@@ -104,6 +107,8 @@
         <script src="scripts/services/menu.js"></script>
         <script src="scripts/services/auth.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/services/client.js"></script>
         <!-- endbuild -->
 </body>
 </html>

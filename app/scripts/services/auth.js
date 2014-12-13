@@ -8,16 +8,17 @@
  * Factory in the recommenuCmsApp.
  */
 angular.module('recommenuCmsApp')
-  .factory('auth', function () {
+  .factory('auth', function (Restangular) {
     // Service logic
-    // ...
-    var meaningOfLife = 42;
-
+    var authEndpoint = Restangular.all('api-token-auth/');
     // Public API here
     return {
-      auth: function () {
-        return meaningOfLife;
+      login: function (username, password) {
+        return authEndpoint.post(JSON.stringify({username: username, password: password}));
       },
-      isLogged: true
+      registerToken: function(token) {
+        Restangular.setDefaultHeaders({'content-type': 'application/json', 'Authorization': 'Token '+ token});
+      },
+      isLogged: false
     };
   });

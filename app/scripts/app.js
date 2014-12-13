@@ -19,7 +19,8 @@ angular
     'ngTouch',
     'ui.bootstrap',
     'ngDragDrop',
-    'restangular'
+    'restangular',
+    'underscore'
   ])
   .config(function ($routeProvider, $locationProvider, RestangularProvider) {
     /* Restangular Config */

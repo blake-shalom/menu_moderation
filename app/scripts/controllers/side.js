@@ -8,11 +8,14 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-  .controller('SideCtrl', function ($scope, client) {
+  .controller('SideCtrl', function ($scope, menu) {
       $scope.$watch(function() {
-         return client.selectedClient;
+         return menu.menus;
       }, function(newValue) {
-         $scope.selectedClient = newValue;
+         $scope.menus = newValue;
+         $scope.loadedMenu = menu.loadedMenu;
+         console.log($scope.loadedMenu);
       });
-      $scope.menus = [{name: 'lunch', sections:['apps', 'sandwiches', 'desserts']}, {name: 'dinner', sections:['food']}];
+      $scope.menus = [];
+      $scope.loadedMenu = false;
   });

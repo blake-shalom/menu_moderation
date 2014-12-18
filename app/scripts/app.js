@@ -28,17 +28,17 @@ angular
     RestangularProvider.configuration.requestSuffix = '&';
     // add a response intereceptor
     RestangularProvider.addResponseInterceptor(function(data, operation) {
-    $locationProvider.html5Mode(true);
-    var extractedData;
-    // .. to look for getList operations
-    if (operation === 'getList') {
-      // .. and handle the data and meta data
-      extractedData = data.results;
-      extractedData.meta = data;
-    } else {
-      extractedData = data;
-    }
-    return extractedData;
+      $locationProvider.html5Mode(true);
+      var extractedData;
+      // .. to look for getList operations
+      if (operation === 'getList') {
+        // .. and handle the data and meta data
+        extractedData = data.results;
+        extractedData.meta = data;
+      } else {
+        extractedData = data;
+      }
+      return extractedData;
     });
 
     $routeProvider
@@ -49,6 +49,10 @@ angular
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+      .when('/entryGrid', {
+        templateUrl: 'views/entrygrid.html',
+        controller: 'EntrygridCtrl'
       })
       .otherwise({
         redirectTo: '/login'

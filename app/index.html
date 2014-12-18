@@ -34,7 +34,7 @@
       <!-- HEADER END -->
       
       <!-- SIDENAV START -->
-      <div class="sidenav" ng-controller="SideCtrl" ng-cloak ng-show="selectedClient != null">
+      <div class="sidenav" ng-controller="SideCtrl" ng-cloak ng-hide="!loadedMenu">
         <h1>SideNav</h1>
         <section id="menu-sidebar">
           <h3>Active Menus</h3>
@@ -43,7 +43,7 @@
               <div accordion-group heading="{{menu.name}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                 <div ng-repeat="section in menu.sections" data-drop="true" ng-model="menu.sections" jqyoui-droppable="{index: {{$index}}}">
                   <div class="grab" data-drag="true" ng-model="menu.sections" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}">
-                    <p>{{section}}</p>
+                    <p>{{section.name}}</p>
                   </div>
                 </div>
               </div>
@@ -113,6 +113,7 @@
         <script src="scripts/controllers/header.js"></script>
         <script src="scripts/services/client.js"></script>
         <script src="scripts/services/underscore.js"></script>
+        <script src="scripts/controllers/entrygrid.js"></script>
         <!-- endbuild -->
 </body>
 </html>

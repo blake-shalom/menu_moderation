@@ -8,7 +8,7 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-  .controller('LoginCtrl', function ($scope, $location, auth, client) {
+  .controller('LoginCtrl', function ($scope, $location, auth, client, menu) {
       $scope.user = '';
       $scope.pw = ''; 
       $scope.logging = '';
@@ -56,7 +56,15 @@ angular.module('recommenuCmsApp')
       };
       $scope.selectClient = function() {
          if ($scope.myCompany !== null) {
-            client.selectedClient = $scope.myCompany;
+            client.selectCompany($scope.myCompany).then(
+               function(data){
+                  menu.menus = data;
+                  menu.loadedMenu = true;
+               },
+                function(err){
+                  console.log('ERROR');
+                  console.log(err);
+                });
             auth.hasSelectedClient = true;
             $scope.selectLog = 'Loading...';
             $location.path( '/about/' );

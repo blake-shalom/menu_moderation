@@ -8,16 +8,17 @@
  * Factory in the recommenuCmsApp.
  */
 angular.module('recommenuCmsApp')
-  .factory('menu', function () {
+  .factory('menu', function (Restangular) {
     // Service logic
     // ...
-
-    var meaningOfLife = 42;
+    var menuEndpoint = Restangular.all('menus/');
 
     // Public API here
     return {
-      getData: function () {
-        return meaningOfLife;
-      }
+      loadActiveMenu: function (clientID) {
+        return menuEndpoint.getList({'company': clientID});
+      },
+      menus: null,
+      loadedMenu: false
     };
   });

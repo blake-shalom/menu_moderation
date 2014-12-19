@@ -38,7 +38,10 @@
         <h1>SideNav</h1>
         <section id="menu-sidebar">
           <h3>Active Menus</h3>
-          <div accordion ng-cloak close-others="true">
+          <div ng-show="menus.length==0" class="btn btn-success">
+            + Add Menu
+          </div>
+          <div accordion ng-cloak close-others="true" ng-show="menus.length!=0">
             <div ng-repeat="menu in menus">
               <div accordion-group heading="{{menu.name}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                 <div ng-repeat="section in menu.sections" data-drop="true" ng-model="menu.sections" jqyoui-droppable="{index: {{$index}}}">
@@ -114,6 +117,7 @@
         <script src="scripts/services/client.js"></script>
         <script src="scripts/services/underscore.js"></script>
         <script src="scripts/controllers/entrygrid.js"></script>
+        <script src="scripts/controllers/addmenu.js"></script>
         <!-- endbuild -->
 </body>
 </html>

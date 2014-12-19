@@ -62,6 +62,23 @@ body {
   cursor: grab;
 }
 
+/* Start of entry grid's classes */
+
+.grid-row {
+  width: 100%;
+  background: blue;
+  /*height: 400px*/
+}
+
+.grid-col {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 70%;
+  background: red;
+}
+
 /* Top of the side-nav */
 
 #menu-sidebar {

@@ -44,9 +44,9 @@ angular.module('recommenuCmsApp')
              },
             function(res){
                $scope.logging = 'Denied, Try Again';
-               console.log(res);
                $scope.user = '';
                $scope.pw = ''; 
+               console.log(res);
             }
             );
          }
@@ -58,8 +58,15 @@ angular.module('recommenuCmsApp')
          if ($scope.myCompany !== null) {
             client.selectCompany($scope.myCompany).then(
                function(data){
-                  menu.menus = data;
+                  // COMMENTED OUT FOR TESTING!!!!
+                  // menu.menus = data;
                   menu.loadedMenu = true;
+                  if (menu.menus.length === 0) {
+                     $location.path( '/add/' );
+                  }
+                  else {
+                     $location.path( '/entries/' );
+                  }
                },
                 function(err){
                   console.log('ERROR');
@@ -67,7 +74,6 @@ angular.module('recommenuCmsApp')
                 });
             auth.hasSelectedClient = true;
             $scope.selectLog = 'Loading...';
-            $location.path( '/about/' );
          }
          else {
             $scope.selectLog = 'Please select a client!';

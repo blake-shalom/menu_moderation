@@ -50,15 +50,19 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/entryGrid', {
+      .when('/entries', {
         templateUrl: 'views/entrygrid.html',
         controller: 'EntrygridCtrl'
+      })
+      .when('/add', {
+        templateUrl: 'views/addmenu.html',
+        controller: 'AddmenuCtrl'
       })
       .otherwise({
         redirectTo: '/login'
       });
-  })
-  .run(function ($rootScope, $location, auth) {
+  });
+  /*.run(function ($rootScope, $location, auth) {
 
     // enumerate routes that don't need authentication
     var routesThatDontRequireAuth = ['/login'];
@@ -77,4 +81,4 @@ angular
         $location.path('/login');
       }
     });
-  });
+  });*/

@@ -18,7 +18,7 @@ angular.module('recommenuCmsApp')
       loadActiveMenu: function (clientID) {
         return menuEndpoint.getList({'company': clientID});
       },
-      menus: null,
+      menus: [],
       loadedMenu: false
     };
   });

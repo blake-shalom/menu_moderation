@@ -1,0 +1,23 @@
+<div ng-show="!addStarted">
+   <h1>
+      Let's Get Started!
+   </h1>
+   <div class="btn btn-success" ng-click="addStarted=true">
+      Add New Menu
+   </div>
+</div>
+<div ng-show="addStarted">
+   <div>
+      <p>Menu title</p>
+      <input type="text" class="form-control" ng-model="title" autofocus>
+   </div>
+   <div class="top17">
+      <p>Description</p>
+      <input type="text" class="form-control" ng-model="description" autofocus>
+   </div>
+   <div>
+      <p>Menu Footer</p>
+      <p class="sm-italic">This will appear at the bottom of the menu. Include information on gratuity, warnings or general notes on the menu</p>
+      <input type="text" class="form-control" ng-model="description" autofocus>
+   </div>
+</div>

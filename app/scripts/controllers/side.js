@@ -10,12 +10,11 @@
 angular.module('recommenuCmsApp')
   .controller('SideCtrl', function ($scope, menu) {
       $scope.$watch(function() {
-         return menu.menus;
+         return menu.loadedMenu;
       }, function(newValue) {
-         $scope.menus = newValue;
-         $scope.loadedMenu = menu.loadedMenu;
-         console.log($scope.loadedMenu);
+         $scope.menus = menu.menus;
+         $scope.loadedMenu = newValue;
       });
       $scope.menus = [];
-      $scope.loadedMenu = false;
+      $scope.loadedMenu = menu.loadedMenu;
   });

@@ -25,7 +25,7 @@
       <!-- HEADER START -->
       <div class="header" ng-controller="HeaderCtrl">
         <ul class="nav nav-pills pull-right">
-          <li>
+          <li ng-cloak>
             <div class="btn" ng-show="needsLogout" ng-click="logout()">Log Out</div>
           </li>
         </ul>
@@ -38,7 +38,7 @@
         <h1>SideNav</h1>
         <section id="menu-sidebar">
           <h3>Active Menus</h3>
-          <div ng-show="menus.length==0" class="btn btn-success">
+          <div ng-show="menus.length==0" ng-click="addMenu()" class="btn btn-success">
             + Add Menu
           </div>
           <div accordion ng-cloak close-others="true" ng-show="menus.length!=0">

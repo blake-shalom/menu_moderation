@@ -17,4 +17,7 @@ angular.module('recommenuCmsApp')
       });
       $scope.menus = [];
       $scope.loadedMenu = menu.loadedMenu;
+      $scope.addMenu = function() {
+        menu.isAddingMenu= true; 
+      };
   });

@@ -18,6 +18,16 @@ angular.module('recommenuCmsApp')
       loadActiveMenu: function (clientID) {
         return menuEndpoint.getList({'company': clientID});
       },
+      createMenu: function (title, description, footer, client) {
+        var newMenu = {
+          name: title,
+          company: client.url,
+          description: description,
+          sections: []
+        };
+        return menuEndpoint.post(newMenu);
+      },
+      isAddingMenu: false,
       menus: [],
       loadedMenu: false
     };

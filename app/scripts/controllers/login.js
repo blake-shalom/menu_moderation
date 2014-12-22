@@ -59,10 +59,10 @@ angular.module('recommenuCmsApp')
             client.selectCompany($scope.myCompany).then(
                function(data){
                   // COMMENTED OUT FOR TESTING!!!!
-                  // menu.menus = data;
+                  menu.menus = data;
                   menu.loadedMenu = true;
                   if (menu.menus.length === 0) {
-                     $location.path( '/add/' );
+                     $location.path( '/menus/' );
                   }
                   else {
                      $location.path( '/entries/' );

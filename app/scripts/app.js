@@ -54,9 +54,13 @@ angular
         templateUrl: 'views/entrygrid.html',
         controller: 'EntrygridCtrl'
       })
-      .when('/add', {
+      .when('/menus', {
         templateUrl: 'views/addmenu.html',
         controller: 'AddmenuCtrl'
+      })
+      .when('/sections', {
+        templateUrl: 'views/addsection.html',
+        controller: 'AddsectionCtrl'
       })
       .otherwise({
         redirectTo: '/login'

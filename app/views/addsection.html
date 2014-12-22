@@ -1,0 +1,34 @@
+<div>
+   <h2>Great!</h2>
+   <h4>Now let's create a section within that menu.</h4>
+</div>
+<div>
+   <p>Section Title</p>
+   <input type="text" class="form-control" ng-model="title" autofocus>
+</div>
+<div>
+   <p>Description</p>
+   <p>Helper Text</p>
+   <input type="text" class="form-control" ng-model="description" autofocus>
+</div>  
+<div class="row">
+   <p class="col-md-6">Is there a price for the whole section?</p>
+   <div class="btn-group">
+        <label class="btn btn-success" ng-model="hasExtraPricing" btn-radio="'No'" uncheckable>No</label>
+        <label class="btn btn-success" ng-model="hasExtraPricing" btn-radio="'Yes'" uncheckable>Yes</label>
+    </div>
+</div>
+<div ng-hide="hasExtraPricing=='No'">
+   <div class="row">
+      <p class="col-md-3">Price</p>
+      <p class="col-md-3">Size or Description</p>
+   </div>
+   <div class='row' ng-repeat="pricing in extraPricing">
+      <input class="col-md-3" type="text" placeholder="$0.00" ng-model="pricing.price">
+      <input class="col-md-3" type="text" ng-model="pricing.description" ng-disabled="pricing.price == ''">
+   </div>
+   <div class="row">
+      <div class="btn btn-success col-md-8" ng-click="addExtraPricing()">Add price or size</div>
+   </div>
+</div>
+<div class="btn btn-success">Create Section</div>

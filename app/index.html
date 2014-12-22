@@ -43,12 +43,14 @@
           </div>
           <div accordion ng-cloak close-others="true" ng-show="menus.length!=0">
             <div ng-repeat="menu in menus">
-              <div accordion-group heading="{{menu.name}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+              <div accordion-group heading="{{menu.name}}" is-open="$index == 0">
                 <div ng-repeat="section in menu.sections" data-drop="true" ng-model="menu.sections" jqyoui-droppable="{index: {{$index}}}">
                   <div class="grab" data-drag="true" ng-model="menu.sections" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}">
                     <p>{{section.name}}</p>
                   </div>
                 </div>
+                <div ng-hide="!isCreatingSection">New Section</div>
+                <div class="btn" ng-click="addSection()" ng-hide="isCreatingSection"> + Add Section</div>
               </div>
             </div>
           </div>
@@ -118,6 +120,8 @@
         <script src="scripts/services/underscore.js"></script>
         <script src="scripts/controllers/entrygrid.js"></script>
         <script src="scripts/controllers/addmenu.js"></script>
+        <script src="scripts/controllers/addsection.js"></script>
+        <script src="scripts/services/section.js"></script>
         <!-- endbuild -->
 </body>
 </html>

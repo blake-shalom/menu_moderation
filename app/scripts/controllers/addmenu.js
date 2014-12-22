@@ -8,7 +8,7 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-   .controller('AddmenuCtrl', function ($scope, menu, client) {
+   .controller('AddmenuCtrl', function ($scope, $location, menu, client, section) {
       $scope.$watch(function() {
          return menu.isAddingMenu;
       }, function(newValue) {
@@ -26,7 +26,8 @@ angular.module('recommenuCmsApp')
                function(data){
                   menu.menus.push(data);
                   menu.loadedMenu = true; 
-                  // TODO go to section uploader
+                  section.creatingSection = true;
+                  $location.path( '/sections/' );
                },
                function(err){
                   console.log(err);

@@ -1,14 +1,13 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name recommenuCmsApp.controller:SideCtrl
+ * @ngdoc directive
+ * @name recommenuCmsApp.directive:sidebar
  * @description
- * # SideCtrl
- * Controller of the recommenuCmsApp
+ * # sidebar
  */
 angular.module('recommenuCmsApp')
-  .controller('SideCtrl', function ($scope, $location, menu, section) {
+  .controller('sidebarCtrl', function ($scope, $location, menu, section) {
       $scope.$watch(function() {
          return menu.loadedMenu;
       }, function(newValue) {
@@ -28,5 +27,20 @@ angular.module('recommenuCmsApp')
       $scope.addSection = function() {
          $location.path( '/sections/' );
          section.creatingSection = true;
+         section.activeSection = null;
       };
-   });
+      $scope.loadActiveSection = function(newSection) {
+         $location.path( '/entries/' );
+         section.activeSection = newSection;
+      };
+      $scope.editNewSection = function() {
+         $location.path( '/sections/' );
+         section.activeSection = null;         
+      };
+   })
+  .directive('sidebar', function () {
+    return {
+      templateUrl: 'views/sidebar.html',
+      restrict: 'E'
+    };
+  });

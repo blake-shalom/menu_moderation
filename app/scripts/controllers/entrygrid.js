@@ -11,10 +11,10 @@ angular.module('recommenuCmsApp')
    .controller('EntrygridCtrl', function ($scope, section) {
       $scope.$watch(function() {
          return section.activeSection;
-      }, function(newValue) {
+      }, function (newValue) {
          if (newValue !== null) {
-            $scope.entries = newValue.entries;
+            $scope.section = newValue;
+            $scope.activeTemplate = section.activeSectionTemplate;
          }
       });
-
    });

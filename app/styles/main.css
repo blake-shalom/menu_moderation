@@ -96,7 +96,6 @@ body {
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    position: fixed;
     top: 0;
     left: 300px;
     max-width: 830px;

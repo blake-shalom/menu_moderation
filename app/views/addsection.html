@@ -1,4 +1,4 @@
-<div>
+<div ng-hide="isEditing">
    <h2>Great!</h2>
    <h4>Now let's create a section within that menu.</h4>
 </div>
@@ -31,7 +31,7 @@
       <div class="btn btn-success col-md-8" ng-click="addExtraPricing()">Add price or size</div>
    </div>
 </div>
-<div>
+<div ng-hide="isEditing">
   <p>What type of menu items will be in this section?</p>
   <div class="row">
     <div class="col-md-4">
@@ -90,4 +90,5 @@
     </div>
   </div>  
 </div>
-<div class="btn btn-success" ng-click="createSection()">Create Section</div>
+<div ng-hide="isEditing" class="btn btn-success" ng-click="createSection()">Create Section</div>
+<div ng-show="isEditing" class="btn btn-success" ng-click="updateSection()">Update Section</div>

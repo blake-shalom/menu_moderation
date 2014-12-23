@@ -11,25 +11,40 @@
  // MAKE IT SO THAT "NO" DOESnT CLEAR PRICING STRUCTURE
 angular.module('recommenuCmsApp')
    .controller('AddsectionCtrl', function ($scope, $location, section, menu) {
+      $scope.$watch(function() {
+         return section.activeSection;
+      }, function (newValue) {
+         if (newValue !== null) {
+            $scope.title = newValue.name;
+            $scope.isEditing = true;
+            // NEED TO FILL OUT REST OF FORMS
+         }
+         else {
+            $scope.isEditing = false;
+         }
+      });
+      $scope.isEditing = false;
       $scope.title = '';
       $scope.description = '';
       $scope.hasExtraPricing = 'No';
       $scope.extraPricing = [];
       $scope.selectedTemplate = 'regular';
+      $scope.willPostExtraPricing = false;
       $scope.addExtraPricing = function() {
          $scope.extraPricing.push({price:'', description:''});
       };
       $scope.newExtraPricing = function() {  
-         $scope.extraPricing = [{price:'', description:''}];
+         $scope.willPostExtraPricing = true;
       };
       $scope.clearPricing = function() {
-         $scope.extraPricing = [];
+         $scope.willPostExtraPricing = false;
       };
       $scope.createSection = function() {
          if ($scope.title === ''){
             window.alert('ENTER A TITLE');
          }
          else {
+            $scope.willPostExtraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.willPostExtraPricing);
             section.postNewSection($scope.title, $scope.description, menu.activeMenu, $scope.extraPricing).then (
                function(data){
                   section.activeSection = data;

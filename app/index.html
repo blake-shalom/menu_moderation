@@ -34,37 +34,17 @@
       <!-- HEADER END -->
       
       <!-- SIDENAV START -->
-      <div class="sidenav" ng-controller="SideCtrl" ng-cloak ng-hide="!loadedMenu">
-        <h1>SideNav</h1>
-        <section id="menu-sidebar">
-          <h3>Active Menus</h3>
-          <div ng-show="menus.length==0" ng-click="addMenu()" class="btn btn-success">
-            + Add Menu
-          </div>
-          <div accordion ng-cloak close-others="true" ng-show="menus.length!=0">
-            <div ng-repeat="menu in menus">
-              <div accordion-group heading="{{menu.name}}" is-open="$index == 0">
-                <div ng-repeat="section in menu.sections" data-drop="true" ng-model="menu.sections" jqyoui-droppable="{index: {{$index}}}">
-                  <div class="grab" data-drag="true" ng-model="menu.sections" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}">
-                    <p>{{section.name}}</p>
-                  </div>
-                </div>
-                <div ng-hide="!isCreatingSection">New Section</div>
-                <div class="btn" ng-click="addSection()" ng-hide="isCreatingSection"> + Add Section</div>
-              </div>
-            </div>
-          </div>
-        </section>       
-      </div>
+      <sidebar></sidebar>
       <!-- END SIDENAV -->
 
-      <div ng-view=""></div>
+      <div ng-view="" autoscroll></div>
 
+      <!-- FOOTER VIEW START -->
       <div class="footer">
         <p><span class="glyphicon glyphicon-heart"></span> from Recommenu</p>
       </div>
     </div>
-
+      <!-- FOOTER VIEW END -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -111,7 +91,6 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/side.js"></script>
         <script src="scripts/services/menu.js"></script>
         <script src="scripts/services/auth.js"></script>
         <script src="scripts/controllers/login.js"></script>
@@ -122,6 +101,7 @@
         <script src="scripts/controllers/addmenu.js"></script>
         <script src="scripts/controllers/addsection.js"></script>
         <script src="scripts/services/section.js"></script>
+        <script src="scripts/directives/sidebar.js"></script>
         <!-- endbuild -->
-</body>
+  </body>
 </html>

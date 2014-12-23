@@ -1,7 +1,16 @@
-<div ng-controller="EntrygridCtrl">
+<div>
    <div class="row grid-row">
-      <div class="col-md-4 grid-col">
-         <p>bullshiz</p>
+      <div class="col-md-4" ng-repeat="entry in entries">
+         <div class="grid-col" data-drop="true" ng-model="entries" jqyoui-droppable="{index: {{$index}}}">
+            <div class="drag-cell" data-drag="true" ng-model="entries" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}">
+               <img class="grid-pic" ng-src="{{entry.image}}"></img>
+               <div class="row">
+                  <h5 class="col-md-8">{{entry.name}}</h5>
+                  <p class="col-md-4">{{entry.price}}</p>
+               </div>
+               <p>{{entry.description}}</p>
+            </div>
+         </div>
       </div>
    </div>
 </div>

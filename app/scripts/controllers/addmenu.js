@@ -26,6 +26,7 @@ angular.module('recommenuCmsApp')
                function(data){
                   menu.menus.push(data);
                   menu.loadedMenu = true; 
+                  menu.activeMenu = data;
                   section.creatingSection = true;
                   $location.path( '/sections/' );
                },

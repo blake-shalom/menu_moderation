@@ -8,7 +8,7 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-  .controller('LoginCtrl', function ($scope, $location, auth, client, menu) {
+  .controller('LoginCtrl', function ($scope, $location, auth, client, menu, section) {
       $scope.user = '';
       $scope.pw = ''; 
       $scope.logging = '';
@@ -65,6 +65,8 @@ angular.module('recommenuCmsApp')
                      $location.path( '/menus/' );
                   }
                   else {
+                     menu.activeMenu = data[0];
+                     section.activeSection = ((menu.activeMenu.sections.length > 0) ? menu.activeMenu.sections[0] : null);
                      $location.path( '/entries/' );
                   }
                },

@@ -9,13 +9,13 @@
 <div>
    <p>Description</p>
    <p>Helper Text</p>
-   <input type="text" class="form-control" ng-model="description" autofocus>
+   <input type="text" class="form-control" ng-model="description">
 </div>  
 <div class="row">
    <p class="col-md-6">Is there a price for the whole section?</p>
    <div class="btn-group">
-        <label class="btn btn-success" ng-model="hasExtraPricing" btn-radio="'No'" uncheckable>No</label>
-        <label class="btn btn-success" ng-model="hasExtraPricing" btn-radio="'Yes'" uncheckable>Yes</label>
+        <label class="btn btn-success" ng-model="hasExtraPricing" btn-radio="'No'" ng-click="clearPricing()">No</label>
+        <label class="btn btn-success" ng-model="hasExtraPricing" btn-radio="'Yes'" ng-click="newExtraPricing()">Yes</label>
     </div>
 </div>
 <div ng-hide="hasExtraPricing=='No'">
@@ -31,4 +31,63 @@
       <div class="btn btn-success col-md-8" ng-click="addExtraPricing()">Add price or size</div>
    </div>
 </div>
-<div class="btn btn-success">Create Section</div>
+<div>
+  <p>What type of menu items will be in this section?</p>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="template-cell" ng-model="selectedTemplate" btn-radio="'regular'" ng-class="{tempactive: selectedTemplate=='regular'}">
+        <div class="temp-header">
+          <p>Normal</p>
+        </div>
+        <div class="temp-desc">
+          <p>These items consist of a title, description and price.</p>
+        </div>
+        <div class="temp-ex">
+          <h5>Example:</h5>
+          <div class="row">
+            <p class="col-md-9 smallp">Roasted Chicken</p>
+            <p class="col-md-3 smallp">$12</p>
+          </div>
+          <p class="xsmallp">Roasted half-chicken with rosemary skillet potatoes, grilled carrots and onion seasoned with pepper.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="template-cell" ng-model="selectedTemplate" btn-radio="'custom'" ng-class="{tempactive: selectedTemplate=='custom'}">
+        <div class="temp-header">
+          <p>Customizable</p>
+        </div>
+        <div class="temp-desc">
+          <p>These items are typically "Build your own." Customers choose from a list of options to make an order</p>
+        </div>
+        <div class="temp-ex">
+          <h5>Example:</h5>
+          <div class="row">
+            <p class="col-md-9 smallp">Roasted Chicken</p>
+            <p class="col-md-3 smallp">$12</p>
+          </div>
+          <p class="xsmallp">Roasted half-chicken with rosemary skillet potatoes, grilled carrots and onion seasoned with pepper.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="template-cell" ng-model="selectedTemplate" btn-radio="'oneLiner'" ng-class="{tempactive: selectedTemplate=='oneLiner'}">
+        <div class="temp-header">
+          <p>One Liners</p>
+        </div>
+        <div class="temp-desc">
+          <p>These items are usually in a list and only have a title</p>
+        </div>
+        <div class="temp-ex">
+          <h5>Example:</h5>
+          <div class="row">
+            <p class="col-md-9 smallp">Roasted Chicken</p>
+            <p class="col-md-3 smallp">$12</p>
+          </div>
+          <p class="xsmallp">Roasted half-chicken with rosemary skillet potatoes, grilled carrots and onion seasoned with pepper.</p>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+<div class="btn btn-success" ng-click="createSection()">Create Section</div>

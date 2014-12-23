@@ -8,12 +8,24 @@
  * Factory in the recommenuCmsApp.
  */
 angular.module('recommenuCmsApp')
-  .factory('section', function () {
-    // Service logic
-    // ...
+  .factory('section', function (Restangular) {
+      // Service logic
+      // Public API here
+      var sectionEndpoint = Restangular.all('sections/');
 
-    // Public API here
-    return {
-        creatingSection: false      
-    };
-  });
+      return {
+         creatingSection: false, 
+         activeSection: null,
+         activeSectionTemplate: 'regular', 
+         // NEED TO ADD prices when they are relevant   
+         postNewSection: function(title, description, menu) {
+            var newSection = {
+               name: title,
+               description: description,
+               menu: menu.url,
+               entries: []
+            };
+            return sectionEndpoint.post(newSection);
+         }   
+      };
+   });

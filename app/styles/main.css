@@ -65,18 +65,23 @@ body {
 /* Start of entry grid's classes */
 
 .grid-row {
-  width: 100%;
   background: blue;
-  /*height: 400px*/
 }
 
 .grid-col {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
-  height: 70%;
+  margin: 10px;
+  height: 300px;
+}
+.drag-cell {
+  height: 100%;
+  width: 100%;
   background: red;
+  padding: 10px
+}
+
+.grid-pic {
+  height: 125px;
+  background: gray
 }
 
 /* Top of the side-nav */
@@ -188,6 +193,47 @@ body {
   display: block;
   margin-top: 20px;
   margin-bottom: 15px;
+}
+
+/* Add Section style */
+
+.template-cell {
+  height: 300px;
+  width: 190px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.temp-header{
+  height: 40px;
+  width: 100%;
+  background: gray
+}
+
+.temp-desc {
+  margin: 20px;
+  height: 100px;
+  border-bottom: 1px solid black;
+  font-size: 12px
+}
+
+.tempactive {
+  background-color:rgba(0,0,0,0.1);
+  transition: background .25s ease-in-out;
+  -moz-transition: background .25s ease-in-out;
+  -webkit-transition: background .25s ease-in-out;
+}
+
+.temp-ex {
+  margin: 20px;
+}
+
+.smallp {
+  font-size: 12px;
+}
+
+.xsmallp {
+  font-size: 10px;
 }
 
 /* Responsive: Portrait tablets and up */

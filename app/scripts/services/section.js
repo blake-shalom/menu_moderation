@@ -26,6 +26,17 @@ angular.module('recommenuCmsApp')
                entries: []
             };
             return sectionEndpoint.post(newSection);
-         }   
+         },
+         updateSection: function(title, description, section, menu) {
+            var updateParams = {
+               name: title,
+               description: description,
+               menu: menu.url,
+               entries: section.entries
+            };
+            var secURL = section.url; 
+            var sectionID = secURL.substring(secURL.length-2,secURL.length-1);
+            return Restangular.one('sections', sectionID).customPUT(updateParams);
+         }
       };
    });

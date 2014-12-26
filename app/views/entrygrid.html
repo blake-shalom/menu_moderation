@@ -21,8 +21,9 @@
          <h5>{{activeTemplate}}</h5>
       </div>
    </div>
+   <div class="btn btn-success" ng-click="editItems()">Edit Items</div>
 </div>
-<div>
+<div ng-hide="isEditingItems">
    <div class="row grid-row">
       <div class="col-md-4" ng-repeat="entry in section.entries">
          <div class="grid-col" data-drop="true" ng-model="section.entries" jqyoui-droppable="{index: {{$index}}}">
@@ -34,6 +35,22 @@
                </div>
                <p>{{entry.description}}</p>
             </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div ng-show="isEditingItems">
+   <div class="row grid-row">
+      <div class="col-md-4 grid-col">
+         <h5>Item Name</h5>
+         <input type="text" class="form-control" ng-model="entry.name">
+         <h5>Description</h5>
+         <input type="text" class="form-control" ng-model="entry.description">
+         <h5>Price</h5>
+         <input type="text" class="form-control" ng-model="entry.price">
+         <h5>Image</h5>
+         <div flow-init>
+            <div class="btn" flow-btn>Upload File</div>
          </div>
       </div>
    </div>

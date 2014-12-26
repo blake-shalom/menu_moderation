@@ -44,7 +44,7 @@ angular.module('recommenuCmsApp')
             window.alert('ENTER A TITLE');
          }
          else {
-            $scope.willPostExtraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.willPostExtraPricing);
+            $scope.extraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.willPostExtraPricing);
             section.postNewSection($scope.title, $scope.description, menu.activeMenu, $scope.extraPricing).then (
                function(data){
                   section.activeSection = data;
@@ -58,5 +58,21 @@ angular.module('recommenuCmsApp')
                }
             );
          }
+      };
+      $scope.updateSection = function() {
+         if ($scope.title === ''){
+            window.alert('ENTER A TITLE');
+         }
+         else {
+            $scope.willPostExtraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.willPostExtraPricing);
+            section.updateSection($scope.title, $scope.description, section.activeSection, menu.activeMenu). then (
+               function(data){
+                  console.log(data);
+               },
+               function(err){
+                  console.log('ERROR');
+                  console.log(err);
+               });
+         }   
       };
    });

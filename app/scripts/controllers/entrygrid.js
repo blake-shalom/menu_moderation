@@ -17,4 +17,8 @@ angular.module('recommenuCmsApp')
             $scope.activeTemplate = section.activeSectionTemplate;
          }
       });
+      $scope.isEditingItems = false;
+      $scope.editItems = function() {
+         $scope.isEditingItems = true;
+      };
    });

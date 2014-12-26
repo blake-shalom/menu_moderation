@@ -20,7 +20,8 @@ angular
     'ui.bootstrap',
     'ngDragDrop',
     'restangular',
-    'underscore'
+    'underscore',
+    'flow'
   ])
   .config(function ($routeProvider, $locationProvider, RestangularProvider) {
     /* Restangular Config */

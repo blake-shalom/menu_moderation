@@ -21,7 +21,8 @@
          <h5>{{activeTemplate}}</h5>
       </div>
    </div>
-   <div class="btn btn-success" ng-click="editItems()">Edit Items</div>
+   <div ng-hide="isEditingItems" class="btn btn-success" ng-click="editItems()">Edit Items</div>
+   <div ng-show="isEditingItems" class="btn btn-success" ng-click="previewItems()">Preview/Arrange Items</div>
 </div>
 <div ng-hide="isEditingItems">
    <div class="row grid-row">
@@ -41,16 +42,26 @@
 </div>
 <div ng-show="isEditingItems">
    <div class="row grid-row">
-      <div class="col-md-4 grid-col">
-         <h5>Item Name</h5>
-         <input type="text" class="form-control" ng-model="entry.name">
-         <h5>Description</h5>
-         <input type="text" class="form-control" ng-model="entry.description">
-         <h5>Price</h5>
-         <input type="text" class="form-control" ng-model="entry.price">
-         <h5>Image</h5>
-         <div flow-init>
-            <div class="btn" flow-btn>Upload File</div>
+      <div class="col-md-4" ng-repeat="entry in section.entries">
+         <div class="grid-flex" style="background:red">
+            <h5>Item Name</h5>
+            <input type="text" class="form-control" ng-model="entry.name">
+            <h5>Description</h5>
+            <input type="text" class="form-control" ng-model="entry.description">
+            <h5>Price</h5>
+            <input type="text" class="form-control" ng-model="entry.price">
+            <h5>Image</h5>
+            <div flow-init="{singleFile:true}">
+               <div class="drop-box" flow-drop flow-drag-enter="style={background: green}" flow-drag-leave="style={}" ng-style="style">
+                  <div class="btn" flow-btn>Upload File</div>
+                  <p>or drop them here</p>
+               </div>
+               <img ng-show="{{entry.image}}" class="entry-thumb" src="{{entry.image}}">
+               <img ng-hide="{{entry.image}}" class="entry-thumb" flow-img="$flow.files[0]"/>
+            </div>
+            <h5>Ratings</h5>
+            <p>In addition to a star rating and comments, customers can rate other attributes of this item. Enter attributes you want to be rated. (Ex. Spiciness)</p>
+            <div class="btn btn-success">+ add attribute rating</div>
          </div>
       </div>
    </div>

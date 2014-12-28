@@ -21,4 +21,7 @@ angular.module('recommenuCmsApp')
       $scope.editItems = function() {
          $scope.isEditingItems = true;
       };
+      $scope.previewItems = function() {
+         $scope.isEditingItems = false;
+      };
    });

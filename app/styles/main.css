@@ -19,6 +19,8 @@ body {
   margin: 0px auto;
 }
 
+/* Next classes make columns same height in a grid */
+
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 /* Sidebar for custom nav */
 .sidenav {
@@ -101,6 +103,10 @@ body {
 .entry-thumb {
   height: 40px;
   max-width: 100%;
+}
+
+.add-button {
+  min-height: 500px
 }
 
 /* Top of the side-nav */

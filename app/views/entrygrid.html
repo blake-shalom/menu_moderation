@@ -51,8 +51,8 @@
             <div class="btn" flow-btn>Upload File</div>
             <p>or drop them here</p>
          </div>
-         <img ng-show="entry.image" class="entry-thumb" ng-src="{{entry.image}}">
-         <img ng-hide="entry.image" class="entry-thumb" flow-img="$flow.files[0]"/>
+         <img ng-show="firstEntry.image" class="entry-thumb" ng-src="{{firstEntry.image}}">
+         <img ng-hide="firstEntry.image" class="entry-thumb" flow-img="$flow.files[0]"/>
       </div>
    </div>
    <div class="row grid-row">
@@ -84,6 +84,10 @@
                </div>
                <div ng-hide="entry.slider_templates.length>=2" class="btn btn-success" ng-click="addSlider(entry)">+ add attribute rating</div>
             </div>
+         </div>
+      </div>
+      <div ng-show="activeTemplate=='custom'">
+         <div class="col-md-4">
          </div>
       </div>
       <div class="col-md-4">

@@ -14,6 +14,7 @@ angular.module('recommenuCmsApp')
       }, function (newValue) {
          if (newValue !== null) {
             $scope.section = newValue;
+            $scope.firstEntry = newValue.entries[0];
             $scope.activeTemplate = section.activeSectionTemplate;
          }
       });

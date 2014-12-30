@@ -8,7 +8,6 @@
  * Controller of the recommenuCmsApp
  */
 
- // MAKE IT SO THAT "NO" DOESnT CLEAR PRICING STRUCTURE
 angular.module('recommenuCmsApp')
    .controller('AddsectionCtrl', function ($scope, $location, section, menu) {
       $scope.$watch(function() {
@@ -26,6 +25,7 @@ angular.module('recommenuCmsApp')
       $scope.isEditing = false;
       $scope.title = '';
       $scope.description = '';
+      $scope.annotation = '';
       $scope.hasExtraPricing = 'No';
       $scope.extraPricing = [];
       $scope.selectedTemplate = 'regular';
@@ -65,14 +65,15 @@ angular.module('recommenuCmsApp')
          }
          else {
             $scope.willPostExtraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.willPostExtraPricing);
-            section.updateSection($scope.title, $scope.description, section.activeSection, menu.activeMenu). then (
+            section.updateSection($scope.title, $scope.description, $scope.annotation, section.activeSection).then (
                function(data){
                   console.log(data);
                },
                function(err){
                   console.log('ERROR');
                   console.log(err);
-               });
+               }
+            );
          }   
       };
    });

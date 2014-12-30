@@ -25,9 +25,10 @@ angular.module('recommenuCmsApp')
       });      
       $scope.signIn = function(username, password) {
          // Check for missing credentials
-         if (username !== undefined && password !== undefined) {
-            $scope.logging = 'Connecting...';
-            auth.login(username, password).then(
+         // if (username !== undefined && password !== undefined) {
+         //    $scope.logging = 'Connecting...';
+            // auth.login(username, password).then(
+            auth.login('burger_bob', 'Burgers.12345').then(
                function(data){
                   auth.registerToken(data.token);
                   client.getCompanies().then(
@@ -49,16 +50,15 @@ angular.module('recommenuCmsApp')
                console.log(res);
             }
             );
-         }
-         else{
-            $scope.logging = 'Please Enter a User Name and Password';
-         }
+         // }
+         // else{
+         //    $scope.logging = 'Please Enter a User Name and Password';
+         // }
       };
       $scope.selectClient = function() {
          if ($scope.myCompany !== null) {
             client.selectCompany($scope.myCompany).then(
                function(data){
-                  // COMMENTED OUT FOR TESTING!!!!
                   menu.menus = data;
                   menu.loadedMenu = true;
                   if (menu.menus.length === 0) {

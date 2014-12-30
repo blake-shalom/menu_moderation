@@ -23,10 +23,15 @@ angular
     'underscore',
     'flow'
   ])
-  .config(function ($routeProvider, $locationProvider, RestangularProvider) {
+  .config(function ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) {
+    /* HTTP Provider config */
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
     /* Restangular Config */
     RestangularProvider.setBaseUrl('http://recommenu-test-api.herokuapp.com');
     RestangularProvider.configuration.requestSuffix = '&';
+    RestangularProvider.setRequestSuffix('?format=json');
     // add a response intereceptor
     RestangularProvider.addResponseInterceptor(function(data, operation) {
       $locationProvider.html5Mode(true);
@@ -37,6 +42,8 @@ angular
         extractedData = data.results;
         extractedData.meta = data;
       } else {
+        console.log('DATA: ');
+        console.log(data);
         extractedData = data;
       }
       return extractedData;

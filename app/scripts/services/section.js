@@ -8,7 +8,7 @@
  * Factory in the recommenuCmsApp.
  */
 angular.module('recommenuCmsApp')
-  .factory('section', function (Restangular) {
+  .factory('section', function ($http, Restangular) {
       // Service logic
       // Public API here
       var sectionEndpoint = Restangular.all('sections/');
@@ -27,16 +27,11 @@ angular.module('recommenuCmsApp')
             };
             return sectionEndpoint.post(newSection);
          },
-         updateSection: function(title, description, section, menu) {
-            var updateParams = {
-               name: title,
-               description: description,
-               menu: menu.url,
-               entries: section.entries
-            };
-            var secURL = section.url; 
-            var sectionID = secURL.substring(secURL.length-2,secURL.length-1);
-            return Restangular.one('sections', sectionID).customPUT(updateParams);
+         updateSection: function(title, description, annotation, section) {
+            var endURL = section.url.substring(section.url.length - 12);
+            var restSection = Restangular.restangularizeElement(null, section,endURL);
+            restSection.name = title;
+            return restSection.put();
          }
       };
    });

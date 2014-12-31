@@ -20,19 +20,13 @@ angular.module('recommenuCmsApp')
       });
       $scope.isEditingItems = false;
       $scope.saveItems = function() {
-         var promises = [];
-         for (var i = 0; i < $scope.section.entries.length; i++){
-            var deffered  = $q.defer();
-            entry.updateEntry($scope.section.entries[i]).then(deffered.resolve,deffered.reject);
-            promises.push(deffered.promise);
-         }
-         $q.all(promises).then(function(){
-            console.log('Success');
-         },
-         function(err){
-            console.log('There exists an error');
-            console.log(err);
-         });
+         entry.saveAllEntries($scope.section.entries).then(
+            function(){
+               console.log('Success!');
+            },
+            function(err){
+               console.log(err);
+            });
       };
       $scope.editItems = function () {
          $scope.isEditingItems = true;

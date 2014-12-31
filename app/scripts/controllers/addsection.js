@@ -66,8 +66,8 @@ angular.module('recommenuCmsApp')
          else {
             $scope.willPostExtraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.willPostExtraPricing);
             section.updateSection($scope.title, $scope.description, $scope.annotation, section.activeSection).then (
-               function(data){
-                  console.log(data);
+               function(){
+                  $location.path('/entries/');
                },
                function(err){
                   console.log('ERROR');

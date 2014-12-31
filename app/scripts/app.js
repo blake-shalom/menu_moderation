@@ -31,7 +31,7 @@ angular
     /* Restangular Config */
     RestangularProvider.setBaseUrl('http://recommenu-test-api.herokuapp.com');
     RestangularProvider.configuration.requestSuffix = '&';
-    RestangularProvider.setRequestSuffix('?format=json');
+    RestangularProvider.setRequestSuffix('/');
     // add a response intereceptor
     RestangularProvider.addResponseInterceptor(function(data, operation) {
       $locationProvider.html5Mode(true);
@@ -42,8 +42,6 @@ angular
         extractedData = data.results;
         extractedData.meta = data;
       } else {
-        console.log('DATA: ');
-        console.log(data);
         extractedData = data;
       }
       return extractedData;

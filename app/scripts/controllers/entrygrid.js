@@ -8,7 +8,7 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-   .controller('EntrygridCtrl', function ($scope, section) {
+   .controller('EntrygridCtrl', function ($q, $scope, section, entry) {
       $scope.$watch(function() {
          return section.activeSection;
       }, function (newValue) {
@@ -19,13 +19,28 @@ angular.module('recommenuCmsApp')
          }
       });
       $scope.isEditingItems = false;
-      $scope.editItems = function() {
+      $scope.saveItems = function() {
+         var promises = [];
+         for (var i = 0; i < $scope.section.entries.length; i++){
+            var deffered  = $q.defer();
+            entry.updateEntry($scope.section.entries[i]).then(deffered.resolve,deffered.reject);
+            promises.push(deffered.promise);
+         }
+         $q.all(promises).then(function(){
+            console.log('Success');
+         },
+         function(err){
+            console.log('There exists an error');
+            console.log(err);
+         });
+      };
+      $scope.editItems = function () {
          $scope.isEditingItems = true;
       };
-      $scope.previewItems = function() {
+      $scope.previewItems = function () {
          $scope.isEditingItems = false;
       };
-      $scope.addSlider = function(entry) {
+      $scope.addSlider = function (entry) {
          entry.slider_templates.push({
             'url': 'http://recommenu-test-api.herokuapp.com/slider_templates/1/', 
             'entry': 'http://recommenu-test-api.herokuapp.com/entries/1/', 

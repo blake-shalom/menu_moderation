@@ -25,7 +25,7 @@
       <div ng-hide="isEditingItems" class="btn btn-success col-md-3" ng-click="editItems()">Edit Items</div>
       <div ng-show="isEditingItems" class="btn btn-success col-md-3" ng-click="previewItems()">Preview/Arrange Items</div>
       <div class="col-md-6"></div>
-      <div class="btn btn-success col-md-3">SAVE CHANGES</div>
+      <div class="btn btn-success col-md-3" ng-click="saveItems()">SAVE CHANGES</div>
    </div>
 </div>
 <div ng-hide="isEditingItems">
@@ -87,11 +87,19 @@
          </div>
       </div>
       <div ng-show="activeTemplate=='custom'">
-         <div class="col-md-4">
+         <div class="col-md-4 grid-flex" style="background:red">
+            <h5>List Title</h5>
+            <input type="text" class="form-control">
+            <h5>List to Choose from</h5>
+            <p>Seperate different items with a (,). Example: white, wheat, rye</p>
+            <input type="text" class="form-control">
+            <h5>Additional Price (if any)</h5>
+            <input type="text" class="form-control">
          </div>
       </div>
       <div class="col-md-4">
-         <div class="btn grid-flex add-button" ng-click="addEntry()" style="background:green">Add New Entry</div>
+         <div ng-hide="activeTemplate=='custom'" class="btn grid-flex add-button" ng-click="addEntry()" style="background:green">Add New Entry</div>
+         <div ng-show="activeTemplate=='custom'" class="btn grid-flex add-button" ng-click="addSubsection()" style="background:green">Add New Subesection</div>
       </div>
    </div>
 </div>

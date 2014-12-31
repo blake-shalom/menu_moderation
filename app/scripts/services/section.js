@@ -11,12 +11,12 @@ angular.module('recommenuCmsApp')
   .factory('section', function ($http, Restangular) {
       // Service logic
       // Public API here
-      var sectionEndpoint = Restangular.all('sections/');
+      var sectionEndpoint = Restangular.all('sections');
 
       return {
          creatingSection: false, 
          activeSection: null,
-         activeSectionTemplate: 'custom', 
+         activeSectionTemplate: 'normal', 
          // NEED TO ADD prices when they are relevant   
          postNewSection: function(title, description, menu) {
             var newSection = {
@@ -27,11 +27,12 @@ angular.module('recommenuCmsApp')
             };
             return sectionEndpoint.post(newSection);
          },
+         restangularizeSections: function(sections) {
+            return Restangular.restangularizeCollection(null,sections,'sections');
+         },
          updateSection: function(title, description, annotation, section) {
-            var endURL = section.url.substring(section.url.length - 12);
-            var restSection = Restangular.restangularizeElement(null, section,endURL);
-            restSection.name = title;
-            return restSection.put();
+            section.name = title;
+            return section.patch();
          }
       };
    });

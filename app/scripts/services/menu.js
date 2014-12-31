@@ -11,7 +11,7 @@ angular.module('recommenuCmsApp')
   .factory('menu', function (Restangular) {
     // Service logic
     // ...
-    var menuEndpoint = Restangular.all('menus/');
+    var menuEndpoint = Restangular.all('menus');
 
     // Public API here
     return {

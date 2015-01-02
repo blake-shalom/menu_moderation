@@ -19,6 +19,7 @@ angular.module('recommenuCmsApp')
       registerToken: function(token) {
         Restangular.setDefaultHeaders({'content-type': 'application/json', 'Authorization': 'Token '+ token});
       },
-      isLogged: false
+      isLogged: false,
+      isNotFirstTime: false
     };
   });

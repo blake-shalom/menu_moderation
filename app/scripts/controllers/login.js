@@ -8,7 +8,7 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-  .controller('LoginCtrl', function ($scope, $location, auth, client, menu, section, entry) {
+  .controller('LoginCtrl', function ($scope, $location, $cookies, auth, client, menu, section, entry) {
       $scope.user = '';
       $scope.pw = ''; 
       $scope.logging = '';
@@ -35,6 +35,8 @@ angular.module('recommenuCmsApp')
                      function(data){
                         auth.isLogged = true;
                         client.clients = data;
+                        auth.isNotFirstTime = $cookies.isNotFirstTime || false;
+                        console.log(auth.isNotFirstTime);
                         $scope.user = '';
                         $scope.pw = ''; 
                         $scope.logging = '';

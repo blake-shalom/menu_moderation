@@ -18,14 +18,17 @@ angular.module('recommenuCmsApp')
          restangularizeEntries: function(entries) {
            return Restangular.restangularizeCollection(null,entries,'entries'); 
          },
+         restangularizeEntry: function(entry) {
+            return Restangular.restangularizeEntry(null,entry,'entries');
+         },
          postEntry: function(entry){
            return entryEndpoint.post(entry);
          },
          updateEntry: function(entry){
            return entry.patch();
          },
-         saveEntry: function(entry){
-           return entry.save();
+         deleteEntry: function(entry) {
+           return entry.remove(); 
          },
          saveAllEntries: function(entries){
             var promises = [];

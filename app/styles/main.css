@@ -1,7 +1,33 @@
+/* Import fonts */
+
+
 /* Space out content a bit */
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: #F8F9F9
+}
+
+p {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+h5 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: #212E31
+}
+
+textarea {
+    resize: none;
+}
+
+p.italic {
+  font-style: italic;
+  color: #909698
 }
 
 /* Row vertical spacers */
@@ -11,25 +37,30 @@ body {
 .top15 { margin-top:15px; }
 .top17 { margin-top:17px; }
 .top30 { margin-top:30px; }
+.top60 { margin-top:60px; }
 .top80 { margin-top:80px; }
 .top110 { margin-top:110px; }
+.left10 { margin-left: 10px;}
 
 .center {  
   text-align: center;
   margin: 0px auto;
 }
 
-/* Next classes make columns same height in a grid */
+.aleft {
+  text-align: left
+}
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-/* Sidebar for custom nav */
+
+/* Sidebar for custom na v */
 .sidenav {
   position: fixed;
   left:0;
   top: 0;
   height: 100%;
-  width: 250px;
-  background: #eeeeee
+  width: 240px;
+  background: #E8EAEA
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -85,7 +116,8 @@ body {
   height: 100%;
   width: 100%;
   background: red;
-  padding: 10px
+  padding: 10px;
+  cursor: move
 }
 
 .grid-pic {
@@ -149,10 +181,6 @@ body {
   margin-top: 28px;
 }
 
-.member-login {
-    positon: left;
-}
-
 /* Login Style */
 .form-login {
   max-width: 550px;
@@ -161,6 +189,11 @@ body {
   background: #fff;
   border-radius: 5px;
   -webkit-border-radius: 5px;
+}
+
+.form-long {
+  height: 120px;
+
 }
 
 .form-login h2.form-login-heading {
@@ -258,6 +291,29 @@ body {
 
 .xsmallp {
   font-size: 10px;
+}
+
+.btn-custom {
+  background-color: hsl(4, 84%, 55%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ef5b51", endColorstr="#ec382b");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ef5b51), to(#ec382b));
+  background-image: -moz-linear-gradient(top, #ef5b51, #ec382b);
+  background-image: -ms-linear-gradient(top, #ef5b51, #ec382b);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ef5b51), color-stop(100%, #ec382b));
+  background-image: -webkit-linear-gradient(top, #ef5b51, #ec382b);
+  background-image: -o-linear-gradient(top, #ef5b51, #ec382b);
+  background-image: linear-gradient(#ef5b51, #ec382b);
+  border-color: #ec382b #ec382b hsl(4, 84%, 53%);
+  font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  height: 60px;
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.13);
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  line-height: 40px
 }
 
 /* Responsive: Portrait tablets and up */

@@ -9,7 +9,7 @@
  */
 
 angular.module('recommenuCmsApp')
-   .controller('AddsectionCtrl', function ($scope, $location, section, menu) {
+   .controller('AddsectionCtrl', function ($scope, $location, section, menu, auth) {
       $scope.$watch(function() {
          return section.activeSection;
       }, function (newValue) {
@@ -22,6 +22,12 @@ angular.module('recommenuCmsApp')
             $scope.isEditing = false;
          }
       });
+      $scope.$watch(function() {
+         return auth.isNotFirstTime;
+      }, function (newValue) {
+         $scope.isFirst = !newValue;
+      });
+
       $scope.isEditing = false;
       $scope.title = '';
       $scope.description = '';

@@ -8,7 +8,7 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-   .controller('HeaderCtrl', function ($scope, $location, auth, client, menu) {
+   .controller('HeaderCtrl', function ($scope, $location, $cookies, auth, client, menu) {
     $scope.$watch(function() {
       return auth.isLogged;
     }, function(newValue) {
@@ -19,5 +19,6 @@ angular.module('recommenuCmsApp')
       client.selectedClient = null;
       $location.path( '/login' );
       menu.loadedMenu = false;
+      $cookies.isNotFirstTime = true;
    };
    });

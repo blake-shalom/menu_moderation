@@ -10,8 +10,9 @@
         <div accordion-group heading="{{menu.name}}" is-open="$index == 0">
           <div ng-repeat="section in menu.sections" data-drop="true" ng-model="menu.sections" jqyoui-droppable="{index: {{$index}}}">
             <div class="grab row" data-drag="true" ng-model="menu.sections" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}" ng-mouseover="showButton=true" ng-mouseleave="showButton=false">
-              <p class="col-md-9">{{section.name}}</p>
+              <p class="col-md-6">{{section.name}}</p>
               <div class="btn col-md-3" ng-show="showButton" ng-click="loadActiveSection(section)">E</div>
+              <div class="btn col-md-3" ng-show="showButton">M</div>
             </div>
           </div>
           <div class="row" ng-hide="!isCreatingSection" ng-mouseover="showEditNew=true" ng-mouseleave="showEditNew=false">

@@ -1,99 +1,111 @@
-<div ng-hide="isEditing || !isFirst" ng-cloak>
-   <h2>Great!</h2>
-   <h4>Now let's create a section within that menu.</h4>
-</div>
-<div>
-   <p>Section Title</p>
-   <input type="text" class="form-control" ng-model="title" autofocus>
-</div>
-<div>
-   <p>Description</p>
-   <p>Helper Text</p>
-   <input type="text" class="form-control" ng-model="description">
-</div>
-<div>
-  <p>Annotation</p>
-  <input type="text" class="form-control" ng-model="annotation">
+<p ng-cloak class="menu-nav">{{menuTitle}}  > <span class="orange">{{title}}</span></p>
 
-</div>  
+<div ng-hide="isEditing || !isFirst" ng-cloak class="alert-box">
+  <h3>Great!</h3>
+  <p>Now let's create a section within that menu.</p>
+</div>
+
 <div class="row">
-   <p class="col-md-6">Is there a price for the whole section?</p>
-   <div class="btn-group">
-        <label class="btn btn-success" ng-model="hasExtraPricing" btn-radio="'No'" ng-click="clearPricing()">No</label>
-        <label class="btn btn-success" ng-model="hasExtraPricing" btn-radio="'Yes'" ng-click="newExtraPricing()">Yes</label>
+  <div class="col-md-1"></div>
+  <div class="col-md-8">
+    <div class="top30">
+      <h5>Section Title</h5>
+      <input type="text" class="form-control left10" ng-model="title" autofocus>
     </div>
-</div>
-<div ng-hide="hasExtraPricing=='No'">
-   <div class="row">
-      <p class="col-md-3">Price</p>
-      <p class="col-md-3">Size or Description</p>
-   </div>
-   <div class='row' ng-repeat="pricing in extraPricing">
-      <input class="col-md-3" type="text" placeholder="$0.00" ng-model="pricing.price">
-      <input class="col-md-3" type="text" ng-model="pricing.description" ng-disabled="pricing.price == ''">
-   </div>
-   <div class="row">
-      <div class="btn btn-success col-md-8" ng-click="addExtraPricing()">Add price or size</div>
-   </div>
-</div>
-<div ng-hide="isEditing">
-  <p>What type of menu items will be in this section?</p>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="template-cell" ng-model="selectedTemplate" btn-radio="'regular'" ng-class="{tempactive: selectedTemplate=='regular'}">
-        <div class="temp-header">
-          <p>Normal</p>
+    <div class="top30">
+       <h5>Description</h5>
+       <textarea type="text" class="form-control left10" ng-model="description" rows="5"></textarea>
+    </div>
+    <div class="top30">
+      <h5>Annotation</h5>
+      <p class="italic left10">Make any notes on this section i.e. "Eating raw or uncooked seafood may make you sick"</p>
+      <input type="text" class="form-control left10" ng-model="annotation">
+
+    </div>  
+    <div class="row top60">
+       <h5 class="col-md-10 top5">Is there a price for the whole section?</h5>
+       <div class="btn-group" class-"col-md-2">
+            <label class="btn btn-black" ng-model="hasExtraPricing" btn-radio="'No'" ng-click="clearPricing()">No</label>
+            <label class="btn btn-black" ng-model="hasExtraPricing" btn-radio="'Yes'" ng-click="newExtraPricing()">Yes</label>
         </div>
-        <div class="temp-desc">
-          <p>These items consist of a title, description and price.</p>
-        </div>
-        <div class="temp-ex">
-          <h5>Example:</h5>
-          <div class="row">
-            <p class="col-md-9 smallp">Roasted Chicken</p>
-            <p class="col-md-3 smallp">$12</p>
+    </div>
+    <div ng-hide="hasExtraPricing=='No'">
+       <div class="row">
+          <p class="col-md-3">Price</p>
+          <p class="col-md-5">Size or Description</p>
+       </div>
+       <div class='row' ng-repeat="pricing in extraPricing">
+          <input class="col-md-3" type="text" placeholder="$0.00" ng-model="pricing.price">
+          <input class="col-md-5 left10" type="text" ng-model="pricing.description" ng-disabled="pricing.price == ''">
+       </div>
+       <div class="row">
+          <div class="btn btn-black col-md-8 top15" ng-click="addExtraPricing()">+ ADD NEW PRICING</div>
+       </div>
+    </div>
+  </div>
+</div>
+
+<div class="row top60">
+  <div class="col-md-1"></div>
+  <div ng-hide="isEditing" class="col-md-10">
+    <h5>What type of menu items will be in this section?</h5>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="template-cell" ng-model="selectedTemplate" btn-radio="'regular'" ng-class="{tempactive: selectedTemplate=='regular'}">
+          <div class="temp-header">
+            <p>Normal</p>
           </div>
-          <p class="xsmallp">Roasted half-chicken with rosemary skillet potatoes, grilled carrots and onion seasoned with pepper.</p>
+          <div class="temp-desc">
+            <p>These items consist of a title, description and price.</p>
+          </div>
+          <div class="temp-ex">
+            <h5>Example:</h5>
+            <div class="row">
+              <p class="col-md-9 smallp">Roasted Chicken</p>
+              <p class="col-md-3 smallp">$12</p>
+            </div>
+            <p class="xsmallp">Roasted half-chicken with rosemary skillet potatoes, grilled carrots and onion seasoned with pepper.</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="template-cell" ng-model="selectedTemplate" btn-radio="'custom'" ng-class="{tempactive: selectedTemplate=='custom'}">
-        <div class="temp-header">
-          <p>Customizable</p>
-        </div>
-        <div class="temp-desc">
-          <p>These items are typically "Build your own." Customers choose from a list of options to make an order</p>
-        </div>
-        <div class="temp-ex">
-          <h5>Example:</h5>
-          <div class="row">
-            <p class="col-md-9 smallp">Roasted Chicken</p>
-            <p class="col-md-3 smallp">$12</p>
+      <div class="col-md-4">
+        <div class="template-cell" ng-model="selectedTemplate" btn-radio="'custom'" ng-class="{tempactive: selectedTemplate=='custom'}">
+          <div class="temp-header">
+            <p>Customizable</p>
           </div>
-          <p class="xsmallp">Roasted half-chicken with rosemary skillet potatoes, grilled carrots and onion seasoned with pepper.</p>
+          <div class="temp-desc">
+            <p>These items are typically "Build your own." Customers choose from a list of options to make an order</p>
+          </div>
+          <div class="temp-ex">
+            <h5>Example:</h5>
+            <div class="row">
+              <p class="col-md-9 smallp">Roasted Chicken</p>
+              <p class="col-md-3 smallp">$12</p>
+            </div>
+            <p class="xsmallp">Roasted half-chicken with rosemary skillet potatoes, grilled carrots and onion seasoned with pepper.</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="template-cell" ng-model="selectedTemplate" btn-radio="'oneLiner'" ng-class="{tempactive: selectedTemplate=='oneLiner'}">
-        <div class="temp-header">
-          <p>One Liners</p>
-        </div>
-        <div class="temp-desc">
-          <p>These items are usually in a list and only have a title</p>
-        </div>
-        <div class="temp-ex">
-          <h5>Example:</h5>
-          <div class="row">
-            <p class="col-md-9 smallp">Roasted Chicken</p>
-            <p class="col-md-3 smallp">$12</p>
+      <div class="col-md-4">
+        <div class="template-cell" ng-model="selectedTemplate" btn-radio="'oneLiner'" ng-class="{tempactive: selectedTemplate=='oneLiner'}">
+          <div class="temp-header">
+            <p>One Liners</p>
           </div>
-          <p class="xsmallp">Roasted half-chicken with rosemary skillet potatoes, grilled carrots and onion seasoned with pepper.</p>
+          <div class="temp-desc">
+            <p>These items are usually in a list and only have a title</p>
+          </div>
+          <div class="temp-ex">
+            <h5>Example:</h5>
+            <div class="row">
+              <p class="col-md-9 smallp">Roasted Chicken</p>
+              <p class="col-md-3 smallp">$12</p>
+            </div>
+            <p class="xsmallp">Roasted half-chicken with rosemary skillet potatoes, grilled carrots and onion seasoned with pepper.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>  
-</div>
+</div>  
 <div ng-hide="isEditing" class="btn btn-success" ng-click="createSection()">Create Section</div>
 <div ng-show="isEditing" class="btn btn-success" ng-click="updateSection()">Update Section</div>

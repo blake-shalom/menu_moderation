@@ -16,12 +16,20 @@ angular.module('recommenuCmsApp')
          if (newValue !== null) {
             $scope.title = newValue.name;
             $scope.isEditing = true;
-            // NEED TO FILL OUT REST OF FORMS
          }
          else {
             $scope.isEditing = false;
          }
       });
+
+      $scope.$watch(function() {
+         return menu.activeMenu;
+      }, function (newValue){
+         if (newValue !== null){
+            $scope.menuTitle = newValue.name;
+         }
+      });
+
       $scope.$watch(function() {
          return auth.isNotFirstTime;
       }, function (newValue) {

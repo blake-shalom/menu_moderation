@@ -80,7 +80,8 @@
                <p>In addition to a star rating and comments, customers can rate other attributes of this item. Enter attributes you want to be rated. (Ex. Spiciness)</p>
                <div ng-repeat="slider in entry.slider_templates" class="row">
                   <h5 class="col-md-2">{{$index + 1}}</h5>
-                  <input type="text" class="form-control col-md-8" ng-model="slider.category">
+                  <input type="text" class="form-control col-md-6" ng-model="slider.category">
+                  <div class="btn btn-danger" ng-click="removeSlider($parent.entry, slider, $index)"></div>
                </div>
                <div ng-hide="entry.slider_templates.length>=2" class="btn btn-success" ng-click="addSlider(entry)">+ add attribute rating</div>
             </div>

@@ -8,7 +8,7 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-   .controller('EntrygridCtrl', function ($q, $scope, section, entry, auth) {
+   .controller('EntrygridCtrl', function ($q, $scope, section, entry, slider, auth) {
       $scope.$watch(function() {
          return section.activeSection;
       }, function (newValue) {
@@ -41,13 +41,31 @@ angular.module('recommenuCmsApp')
          $scope.isEditingItems = false;
       };
       $scope.addSlider = function (entry) {
-         entry.slider_templates.push({
-            'url': 'http://recommenu-test-api.herokuapp.com/slider_templates/1/', 
-            'entry': 'http://recommenu-test-api.herokuapp.com/entries/1/', 
-            'category': '', 
+         slider.postSlider({
+            'entry': entry.url, 
+            'category': ' ', 
             'average_score': '0', 
             'sliders': [],
+         }).then(
+         function (data){
+            console.log(data);
+            entry.slider_templates.push(data);
+         },
+         function (err){
+            console.log(err);
          });
+      };
+      $scope.removeSlider = function (curEntry, dSlider, index) {
+         console.log(curEntry);
+         console.log(dSlider);
+         slider.deleteSlider(dSlider).then(
+            function (data){
+               console.log(data);
+               curEntry.slider_templates.splice(index,1);
+            },
+            function (err){
+               console.log(err);
+            });
       };
       $scope.addEntry = function() {
          entry.postEntry({
@@ -68,8 +86,6 @@ angular.module('recommenuCmsApp')
             });   
       };
       $scope.removeEntry = function(dEntry, index) {
-         console.log(dEntry);
-         console.log(index);
          entry.deleteEntry(dEntry).then(
             function(data){
                console.log(data);

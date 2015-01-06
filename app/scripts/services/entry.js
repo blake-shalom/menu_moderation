@@ -8,7 +8,7 @@
  * Factory in the recommenuCmsApp.
  */
 angular.module('recommenuCmsApp')
-   .factory('entry', function ($q, Restangular) {
+   .factory('entry', function ($q, Restangular, slider) {
        // Service logic
        // ...
       var entryEndpoint = Restangular.all('entries');
@@ -16,19 +16,22 @@ angular.module('recommenuCmsApp')
        // Public API here
       return {
          restangularizeEntries: function(entries) {
-           return Restangular.restangularizeCollection(null,entries,'entries'); 
+            for (var i in entries){
+               entries[i].slider_templates = slider.restangularizeSliders(entries[i].slider_templates);
+            }
+            return Restangular.restangularizeCollection(null,entries,'entries'); 
          },
          restangularizeEntry: function(entry) {
             return Restangular.restangularizeEntry(null,entry,'entries');
          },
          postEntry: function(entry){
-           return entryEndpoint.post(entry);
+            return entryEndpoint.post(entry);
          },
          updateEntry: function(entry){
-           return entry.patch();
+            return entry.patch();
          },
          deleteEntry: function(entry) {
-           return entry.remove(); 
+            return entry.remove(); 
          },
          saveAllEntries: function(entries){
             var promises = [];

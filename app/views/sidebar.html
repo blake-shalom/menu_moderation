@@ -1,13 +1,14 @@
 <div class="sidenav" ng-controller="sidebarCtrl" ng-cloak ng-hide="!loadedMenu">
-  <h1>SideNav</h1>
   <section id="menu-sidebar">
-    <h3>Active Menus</h3>
     <div ng-show="menus.length==0" ng-click="addMenu()" class="btn btn-success">
       + Add Menu
     </div>
     <div accordion ng-cloak close-others="true" ng-show="menus.length!=0">
       <div ng-repeat="menu in menus">
-        <div accordion-group heading="{{menu.name}}" is-open="$index == 0">
+        <div accordion-group is-open="true">
+          <accordion-heading class="menu-head">
+            <p>{{menu.name}}</p>
+          </accordion-heading>
           <div ng-repeat="section in menu.sections" data-drop="true" ng-model="menu.sections" jqyoui-droppable="{index: {{$index}}}">
             <div class="grab row" data-drag="true" ng-model="menu.sections" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}" ng-mouseover="showButton=true" ng-mouseleave="showButton=false">
               <p class="col-md-6">{{section.name}}</p>
@@ -19,7 +20,9 @@
             <p class="col-md-9">New Section</p>
             <div class="btn col-md-3" ng-show="showEditNew" ng-click="editNewSection()">E</div>
           </div>
-          <div class="btn" ng-click="addSection()" ng-hide="isCreatingSection"> + Add Section</div>
+          <div class="btn add-btn row" ng-click="addSection()" ng-hide="isCreatingSection"> 
+            <strong class="col-md-2">+</strong> <p class="col-md-8">Add Section</p>
+         </div>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ angular.module('recommenuCmsApp')
       return {
          creatingSection: false, 
          activeSection: null,
-         activeSectionTemplate: 'oneLiner', 
+         activeSectionTemplate: 'normal', 
          // NEED TO ADD prices when they are relevant   
          postNewSection: function(title, description, menu) {
             var newSection = {

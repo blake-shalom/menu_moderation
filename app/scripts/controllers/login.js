@@ -22,7 +22,8 @@ angular.module('recommenuCmsApp')
          return client.clients;
       }, function(newValue) {
          $scope.companies = newValue;
-      });      
+      });     
+
       $scope.signIn = function(username, password) {
          // Check for missing credentials
          // if (username !== undefined && password !== undefined) {
@@ -92,5 +93,4 @@ angular.module('recommenuCmsApp')
             $scope.selectLog = 'Please select a client!';
          }
       };
-
    });

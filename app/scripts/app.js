@@ -68,6 +68,14 @@ angular
         templateUrl: 'views/addsection.html',
         controller: 'AddsectionCtrl'
       })
+      .when('/company', {
+        templateUrl: 'views/addcompany.html',
+        controller: 'AddcompanyCtrl'
+      })
+      .when('/user', {
+        templateUrl: 'views/adduser.html',
+        controller: 'AdduserCtrl'
+      })
       .otherwise({
         redirectTo: '/login'
       });

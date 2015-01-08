@@ -25,6 +25,7 @@ angular.module('recommenuCmsApp')
       });
 
       $scope.isEditingItems = false;
+      
       $scope.saveItems = function() {
          entry.saveAllEntries($scope.section.entries).then(
             function(){
@@ -33,12 +34,6 @@ angular.module('recommenuCmsApp')
             function(err){
                console.log(err);
             });
-      };
-      $scope.editItems = function () {
-         $scope.isEditingItems = true;
-      };
-      $scope.previewItems = function () {
-         $scope.isEditingItems = false;
       };
       $scope.addSlider = function (entry) {
          slider.postSlider({

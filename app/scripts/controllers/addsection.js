@@ -21,7 +21,6 @@ angular.module('recommenuCmsApp')
             $scope.isEditing = false;
          }
       });
-
       $scope.$watch(function() {
          return menu.activeMenu;
       }, function (newValue){
@@ -29,7 +28,6 @@ angular.module('recommenuCmsApp')
             $scope.menuTitle = newValue.name;
          }
       });
-
       $scope.$watch(function() {
          return auth.isNotFirstTime;
       }, function (newValue) {
@@ -41,9 +39,10 @@ angular.module('recommenuCmsApp')
       $scope.description = '';
       $scope.annotation = '';
       $scope.hasExtraPricing = 'No';
-      $scope.extraPricing = [];
+      $scope.extraPricing = [{price:'', description:''}];
       $scope.selectedTemplate = 'regular';
       $scope.willPostExtraPricing = false;
+      
       $scope.addExtraPricing = function() {
          $scope.extraPricing.push({price:'', description:''});
       };
@@ -58,7 +57,7 @@ angular.module('recommenuCmsApp')
             window.alert('ENTER A TITLE');
          }
          else {
-            $scope.extraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.willPostExtraPricing);
+            $scope.extraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.extraPricing);
             section.postNewSection($scope.title, $scope.description, menu.activeMenu, $scope.extraPricing).then (
                function(data){
                   section.activeSection = data;
@@ -89,5 +88,18 @@ angular.module('recommenuCmsApp')
                }
             );
          }   
+      };
+      $scope.removeSection = function() {
+         section.deleteSection(section.activeSection).then(
+            function (){
+               console.log('Success!');
+               section.activeSection = menu.activeMenu.sections[0];
+            },
+            function (err){
+               console.log(err);
+            });
+      };
+      $scope.removePricing = function (index) {
+         $scope.extraPricing.splice(index,1);
       };
    });

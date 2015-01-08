@@ -21,6 +21,9 @@ angular.module('recommenuCmsApp')
         this.selectedClient = client;
         return menu.loadActiveMenu(client.id);
       },
+      createCompany: function(client) {
+        return clientEndpoint.post(client);
+      },
       clients: null,
       selectedClient: null
     };

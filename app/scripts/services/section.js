@@ -23,7 +23,8 @@ angular.module('recommenuCmsApp')
                name: title,
                description: description,
                menu: menu.url,
-               entries: []
+               entries: [],
+               section_prices: []
             };
             return sectionEndpoint.post(newSection);
          },
@@ -33,6 +34,9 @@ angular.module('recommenuCmsApp')
          updateSection: function(title, description, annotation, section) {
             section.name = title;
             return section.patch();
+         },
+         deleteSection: function(section) {
+            return section.remove();
          }
       };
    });

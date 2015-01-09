@@ -9,10 +9,6 @@
  */
 angular.module('recommenuCmsApp')
   .controller('LoginCtrl', function ($scope, $location, $cookies, auth, client, menu, section, entry) {
-      $scope.user = '';
-      $scope.pw = ''; 
-      $scope.logging = '';
-      $scope.myCompany = null;
       $scope.$watch(function() {
          return auth.isLogged;
       }, function(newValue) {
@@ -23,6 +19,11 @@ angular.module('recommenuCmsApp')
       }, function(newValue) {
          $scope.companies = newValue;
       });     
+
+      $scope.user = '';
+      $scope.pw = ''; 
+      $scope.logging = '';
+      $scope.myCompany = null;
 
       $scope.signIn = function(username, password) {
          // Check for missing credentials
@@ -44,6 +45,7 @@ angular.module('recommenuCmsApp')
                      },
                      function(err){
                         console.log(err);
+                        window.alert('Server ERROR!');
                      });
              },
             function(res){
@@ -83,7 +85,7 @@ angular.module('recommenuCmsApp')
                   }
                },
                 function(err){
-                  console.log('ERROR');
+                  window.alert('Server ERROR!');
                   console.log(err);
                 });
             auth.hasSelectedClient = true;

@@ -68,6 +68,7 @@ angular.module('recommenuCmsApp')
                },
                function(err){
                   console.log(err);
+                  window.alert('Server ERROR!');
                }
             );
          }
@@ -83,8 +84,8 @@ angular.module('recommenuCmsApp')
                   $location.path('/entries/');
                },
                function(err){
-                  console.log('ERROR');
                   console.log(err);
+                  window.alert('Server ERROR!');
                }
             );
          }   
@@ -97,6 +98,7 @@ angular.module('recommenuCmsApp')
             },
             function (err){
                console.log(err);
+               window.alert('Server ERROR!');
             });
       };
       $scope.removePricing = function (index) {

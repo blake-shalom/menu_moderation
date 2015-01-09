@@ -21,7 +21,7 @@ angular.module('recommenuCmsApp')
                contact_name: $scope.contact,
                zip_code: $scope.zip,
                address1: $scope.address,
-               manager: 'http://recommenu-test-api.herokuapp.com/users/2/'
+               manager: 'http://recommenu-test-api.herokuapp.com/user_profile/2/'
             }).then(
             function (data){
                client.clients.push(data);
@@ -33,10 +33,12 @@ angular.module('recommenuCmsApp')
                   }, 
                   function (err) {
                      console.log(err);
+                     window.alert('Server ERROR!');
                   });
             },
             function (err){
                console.log(err);
+               window.alert('Server ERROR!');
             });
          }
       };

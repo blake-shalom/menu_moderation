@@ -19,13 +19,7 @@ angular.module('recommenuCmsApp')
         return menuEndpoint.getList({'company': clientID});
       },
       // NEED TO ADD FOOTER ONCE DATA MODEL CHANGES
-      createMenu: function (title, description, footer, client) {
-        var newMenu = {
-          name: title,
-          company: client.url,
-          description: description,
-          sections: []
-        };
+      createMenu: function (newMenu) {
         return menuEndpoint.post(newMenu);
       },
       isAddingMenu: false,

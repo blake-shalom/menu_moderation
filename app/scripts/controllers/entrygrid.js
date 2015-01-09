@@ -33,6 +33,7 @@ angular.module('recommenuCmsApp')
             },
             function(err){
                console.log(err);
+               window.alert('Server ERROR!');
             });
       };
       $scope.addSlider = function (entry) {
@@ -48,6 +49,7 @@ angular.module('recommenuCmsApp')
          },
          function (err){
             console.log(err);
+            window.alert('Server ERROR!');
          });
       };
       $scope.removeSlider = function (curEntry, dSlider, index) {
@@ -60,6 +62,7 @@ angular.module('recommenuCmsApp')
             },
             function (err){
                console.log(err);
+               window.alert('Server ERROR!');
             });
       };
       $scope.addEntry = function() {
@@ -78,6 +81,7 @@ angular.module('recommenuCmsApp')
             },
             function (err){
                console.log(err);
+               window.alert('Server ERROR!');
             });   
       };
       $scope.removeEntry = function(dEntry, index) {
@@ -88,6 +92,7 @@ angular.module('recommenuCmsApp')
             },
             function(err) {
                console.log(err);
+               window.alert('Server ERROR!');
             });
       };
    });

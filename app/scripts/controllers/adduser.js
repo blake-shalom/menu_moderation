@@ -30,6 +30,7 @@ angular.module('recommenuCmsApp')
                },
                function (err) {
                   console.log(err);
+                  window.alert('Server ERROR!');
                });
             }
          }

@@ -22,7 +22,12 @@ angular.module('recommenuCmsApp')
             window.alert('ENTER A TITLE');
          }
          else {
-            menu.createMenu($scope.title, $scope.description, $scope.footer, client.selectedClient).then (
+            menu.createMenu({
+            name: $scope.title,
+            company: client.selectedClient.url,
+            description: $scope.description,
+            sections: []
+         }).then (
                function(data){
                   menu.menus.push(data);
                   menu.loadedMenu = true; 
@@ -32,6 +37,7 @@ angular.module('recommenuCmsApp')
                },
                function(err){
                   console.log(err);
+                  window.alert('Server ERROR!');
                });
          }
       };

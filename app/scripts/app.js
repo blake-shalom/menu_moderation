@@ -21,7 +21,8 @@ angular
     'ngDragDrop',
     'restangular',
     'underscore',
-    'flow'
+    'flow',
+    'angular-loading-bar'
   ])
   .config(function ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) {
     /* HTTP Provider config */

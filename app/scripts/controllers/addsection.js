@@ -14,7 +14,7 @@ angular.module('recommenuCmsApp')
          return section.activeSection;
       }, function (newValue) {
          if (newValue !== null) {
-            $scope.title = newValue.name;
+            $scope.section = newValue;
             $scope.isEditing = true;
          }
          else {
@@ -33,7 +33,7 @@ angular.module('recommenuCmsApp')
       }, function (newValue) {
          $scope.isFirst = !newValue;
       });
-
+      $scope.section = {};
       $scope.isEditing = false;
       $scope.title = '';
       $scope.description = '';
@@ -58,7 +58,15 @@ angular.module('recommenuCmsApp')
          }
          else {
             $scope.extraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.extraPricing);
-            section.postNewSection($scope.title, $scope.description, menu.activeMenu, $scope.extraPricing).then (
+            section.postNewSection({
+               name: $scope.title,
+               description: $scope.description,
+               menu: menu.activeMenu.url,
+               annotation: $scope.annotation,
+               entries: [],
+               section_prices: $scope.extraPricing,
+               order: menu.activeMenu.sections.length
+            }).then (
                function(data){
                   section.activeSection = data;
                   section.creatingSection = false;
@@ -74,13 +82,15 @@ angular.module('recommenuCmsApp')
          }
       };
       $scope.updateSection = function() {
-         if ($scope.title === ''){
+         if ($scope.section.title === ''){
             window.alert('ENTER A TITLE');
          }
          else {
             $scope.willPostExtraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.willPostExtraPricing);
-            section.updateSection($scope.title, $scope.description, $scope.annotation, section.activeSection).then (
-               function(){
+            section.updateSection($scope.section).then (
+               function(data){
+                  console.log(data);
+                  section.activeSection = data;
                   $location.path('/entries/');
                },
                function(err){

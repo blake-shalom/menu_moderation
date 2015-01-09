@@ -30,7 +30,7 @@ angular
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
     /* Restangular Config */
-    RestangularProvider.setBaseUrl('http://recommenu-test-api.herokuapp.com');
+    RestangularProvider.setBaseUrl('http://recommenu-dev-api.herokuapp.com');
     RestangularProvider.configuration.requestSuffix = '&';
     RestangularProvider.setRequestSuffix('/');
     // add a response intereceptor
@@ -52,10 +52,6 @@ angular
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
       })
       .when('/entries', {
         templateUrl: 'views/entrygrid.html',

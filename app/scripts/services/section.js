@@ -18,21 +18,13 @@ angular.module('recommenuCmsApp')
          activeSection: null,
          activeSectionTemplate: 'normal', 
          // NEED TO ADD prices when they are relevant   
-         postNewSection: function(title, description, menu) {
-            var newSection = {
-               name: title,
-               description: description,
-               menu: menu.url,
-               entries: [],
-               section_prices: []
-            };
+         postNewSection: function(newSection) {
             return sectionEndpoint.post(newSection);
          },
          restangularizeSections: function(sections) {
             return Restangular.restangularizeCollection(null,sections,'sections');
          },
-         updateSection: function(title, description, annotation, section) {
-            section.name = title;
+         updateSection: function(section) {
             return section.patch();
          },
          deleteSection: function(section) {

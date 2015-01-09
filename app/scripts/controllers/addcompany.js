@@ -20,8 +20,7 @@ angular.module('recommenuCmsApp')
                city: $scope.city,
                contact_name: $scope.contact,
                zip_code: $scope.zip,
-               address1: $scope.address,
-               manager: 'http://recommenu-test-api.herokuapp.com/user_profile/2/'
+               address1: $scope.address
             }).then(
             function (data){
                client.clients.push(data);

@@ -14,16 +14,16 @@
   <div class="col-md-8">
     <div class="top30">
       <h5>Section Title</h5>
-      <input type="text" class="form-control left10" ng-model="title" autofocus>
+      <input type="text" class="form-control left10" ng-model="section.name" autofocus>
     </div>
     <div class="top30">
        <h5>Description</h5>
-       <textarea type="text" class="form-control left10" ng-model="description" rows="5"></textarea>
+       <textarea type="text" class="form-control left10" ng-model="section.description" rows="5"></textarea>
     </div>
     <div class="top30">
       <h5>Annotation</h5>
       <p class="italic left10">Make any notes on this section i.e. "Eating raw or uncooked seafood may make you sick"</p>
-      <input type="text" class="form-control left10" ng-model="annotation">
+      <input type="text" class="form-control left10" ng-model="section.annotation">
 
     </div>  
     <div class="row top60">
@@ -38,7 +38,7 @@
           <p class="col-md-3">Price</p>
           <p class="col-md-5">Size or Description</p>
        </div>
-       <div class='row' ng-repeat="pricing in extraPricing">
+       <div class='row' ng-repeat="pricing in section.section_prices">
           <input class="col-md-3" type="text" placeholder="$0.00" ng-model="pricing.price">
           <input class="col-md-5 left10" type="text" ng-model="pricing.description" ng-disabled="pricing.price == ''">
           <div ng-hide="$index==0" class="btn btn-danger col-md-1" ng-click="removePricing($index)">-</div>
@@ -133,8 +133,9 @@
           </div>
         </div>
       </div>
-        <div ng-hide="isEditing" class="btn btn-custom col-md-8 top60" ng-click="createSection()">Create Section</div>
-        <div ng-show="isEditing" class="btn btn-custom col-md-8 top60" ng-click="updateSection()">Update Section</div>
+      <p>{{isEditing}}</p>
     </div>
   </div>
+  <div ng-hide="isEditing" class="btn btn-custom col-md-8 top60" ng-click="createSection()">Create Section</div>
+  <div ng-show="isEditing" class="btn btn-custom col-md-8 top60" ng-click="updateSection()">Update Section</div>
 </div>  

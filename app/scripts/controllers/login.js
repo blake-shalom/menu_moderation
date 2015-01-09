@@ -75,6 +75,7 @@ angular.module('recommenuCmsApp')
                      if (menu.activeMenu.sections.length > 0) {
                         section.activeSection = menu.activeMenu.sections[0];
                         section.activeSection.entries = entry.restangularizeEntries(section.activeSection.entries);
+                        console.log('To Entries!!')
                         $location.path( '/entries/' );
                      }
                      else {

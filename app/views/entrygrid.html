@@ -37,9 +37,9 @@
 
 <div ng-hide="isEditingItems" class="top30">
    <div class="row grid-row">
-      <div class="col-md-4" ng-repeat="entry in section.entries">
+      <div class="col-md-4" ng-repeat="entry in section.entries | orderBy: entry.order">
          <div class="grid-col" data-drop="true" ng-model="section.entries" jqyoui-droppable="{index: {{$index}}}">
-            <div class="drag-cell" data-drag="true" ng-model="section.entries" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}">
+            <div class="drag-cell" data-drag="true" ng-model="section.entries" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: entry.order,placeholder:false,animate:false}">
                <img class="grid-pic" ng-src="{{entry.image}}"></img>
                <div class="row">
                   <h5 class="col-md-8">{{entry.name}}</h5>
@@ -63,7 +63,7 @@
       </div>
    </div>
    <div class="row">
-      <div class="col-md-4" ng-repeat="entry in section.entries" ng-hide="activeTemplate=='custom'">
+      <div class="col-md-4" ng-repeat="entry in section.entries | orderBy: entry.order" ng-hide="activeTemplate=='custom'">
          <div class="grid-flex">
             <h5>Item Name</h5>
             <input type="text" class="form-control" ng-model="entry.name">

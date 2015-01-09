@@ -28,7 +28,7 @@ angular.module('recommenuCmsApp')
             return entryEndpoint.post(entry);
          },
          updateEntry: function(entry){
-            return entry.put();
+            return entry.patch();
          },
          deleteEntry: function(entry) {
             return entry.remove(); 

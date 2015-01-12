@@ -27,15 +27,15 @@ angular.module('recommenuCmsApp')
       $scope.isEditingItems = false;
       
       $scope.saveItems = function() {
-         console.log($scope.section.entries);
-         // entry.saveAllEntries($scope.section.entries).then(
-         //    function(){
-         //       console.log('Success!');
-         //    },
-         //    function(err){
-         //       console.log(err);
-         //       window.alert('Server ERROR!');
-         //    });
+         // console.log($scope.section.entries);
+         entry.saveAllEntries($scope.section.entries).then(
+            function(){
+               console.log('Success!');
+            },
+            function(err){
+               console.log(err);
+               window.alert('Server ERROR!');
+            });
       };
       $scope.addSlider = function (entry) {
          slider.postSlider({

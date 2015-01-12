@@ -53,20 +53,16 @@ angular.module('recommenuCmsApp')
          $scope.willPostExtraPricing = false;
       };
       $scope.createSection = function() {
-         if ($scope.title === ''){
+         if ($scope.section.title === ''){
             window.alert('ENTER A TITLE');
          }
          else {
             $scope.extraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.extraPricing);
-            section.postNewSection({
-               name: $scope.title,
-               description: $scope.description,
-               menu: menu.activeMenu.url,
-               annotation: $scope.annotation,
-               entries: [],
-               section_prices: $scope.extraPricing,
-               order: menu.activeMenu.sections.length
-            }).then (
+            $scope.section.menu = menu.activeMenu.url;
+            $scope.section.entries = [];
+            $scope.section.section_prices = $scope.extraPricing;
+            $scope.section.order = menu.activeMenu.sections.length;
+            section.postNewSection($scope.section).then (
                function(data){
                   section.activeSection = data;
                   section.creatingSection = false;

@@ -27,7 +27,6 @@ angular.module('recommenuCmsApp')
       $scope.isEditingItems = false;
       
       $scope.saveItems = function() {
-         // console.log($scope.section.entries);
          entry.saveAllEntries($scope.section.entries).then(
             function(){
                console.log('Success!');
@@ -74,7 +73,8 @@ angular.module('recommenuCmsApp')
                'image': '', 
                'description': '', 
                'slider_templates': [],
-               'entry_prices':[]
+               'entry_prices':[],
+               'order': $scope.section.entries.length
          }).then(
             function (data){
                $scope.section.entries.push(data);

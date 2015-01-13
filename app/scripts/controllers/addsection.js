@@ -3,13 +3,13 @@
 /**
  * @ngdoc function
  * @name recommenuCmsApp.controller:AddsectionCtrl
- * @description
+ * @text
  * # AddsectionCtrl
  * Controller of the recommenuCmsApp
  */
 
 angular.module('recommenuCmsApp')
-   .controller('AddsectionCtrl', function ($scope, $location, section, menu, auth) {
+   .controller('AddsectionCtrl', function ($scope, $location, section, menu, auth, sectionPricing) {
       $scope.$watch(function() {
          return section.activeSection;
       }, function (newValue) {
@@ -18,6 +18,8 @@ angular.module('recommenuCmsApp')
             $scope.isEditing = true;
          }
          else {
+            $scope.section = {};
+            $scope.section_prices = [{price:'', text:''}];
             $scope.isEditing = false;
          }
       });
@@ -33,18 +35,16 @@ angular.module('recommenuCmsApp')
       }, function (newValue) {
          $scope.isFirst = !newValue;
       });
+
       $scope.section = {};
+      $scope.section_prices = [{price:'', text:''}];
       $scope.isEditing = false;
-      $scope.title = '';
-      $scope.description = '';
-      $scope.annotation = '';
       $scope.hasExtraPricing = 'No';
-      $scope.extraPricing = [{price:'', description:''}];
       $scope.selectedTemplate = 'regular';
       $scope.willPostExtraPricing = false;
       
       $scope.addExtraPricing = function() {
-         $scope.extraPricing.push({price:'', description:''});
+         $scope.section_prices.push({price:'', text:''});
       };
       $scope.newExtraPricing = function() {  
          $scope.willPostExtraPricing = true;
@@ -52,23 +52,33 @@ angular.module('recommenuCmsApp')
       $scope.clearPricing = function() {
          $scope.willPostExtraPricing = false;
       };
+      $scope.removePricing = function(i) {
+         $scope.section_prices.splice(i,1);
+      };
       $scope.createSection = function() {
          if ($scope.section.title === ''){
             window.alert('ENTER A TITLE');
          }
          else {
-            $scope.extraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.extraPricing);
+            $scope.section_prices = (($scope.willPostExtraPricing === false) ? [] : $scope.section_prices);
             $scope.section.menu = menu.activeMenu.url;
             $scope.section.entries = [];
-            $scope.section.section_prices = $scope.extraPricing;
             $scope.section.order = menu.activeMenu.sections.length;
+            $scope.section.section_prices = [];
             section.postNewSection($scope.section).then (
-               function(data){
+               function (data){
+                  menu.activeMenu.sections.push(data);
                   section.activeSection = data;
                   section.creatingSection = false;
                   section.activeTemplate = $scope.selectedTemplate;
-                  menu.activeMenu.sections.push(data);
-                  $location.path( '/entries/' );
+                  sectionPricing.saveSectionPricesToSection($scope.section_prices, data).then(
+                     function (data){
+                        console.log(data);
+                        $location.path( '/entries/' );
+                     },
+                     function (err){
+                        console.log(err);
+                     });
                },
                function(err){
                   console.log(err);
@@ -82,7 +92,7 @@ angular.module('recommenuCmsApp')
             window.alert('ENTER A TITLE');
          }
          else {
-            $scope.willPostExtraPricing = (($scope.willPostExtraPricing === false) ? [] : $scope.willPostExtraPricing);
+            $scope.section_prices = (($scope.willPostExtraPricing === false) ? [] : $scope.section_prices);
             section.updateSection($scope.section).then (
                function(data){
                   console.log(data);
@@ -100,14 +110,13 @@ angular.module('recommenuCmsApp')
          section.deleteSection(section.activeSection).then(
             function (){
                console.log('Success!');
+               menu.sections.splice(section.activeSection.order, 1);
                section.activeSection = menu.activeMenu.sections[0];
+               $location.path('/entries/');
             },
             function (err){
                console.log(err);
                window.alert('Server ERROR!');
             });
-      };
-      $scope.removePricing = function (index) {
-         $scope.extraPricing.splice(index,1);
       };
    });

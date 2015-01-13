@@ -8,7 +8,7 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-   .controller('AddcompanyCtrl', function ($scope, client, menu) {
+   .controller('AddcompanyCtrl', function ($scope, $location, client, menu) {
       $scope.createCompany = function() {
          if (!$scope.url || !$scope.name || !$scope.contact || !$scope.address || !$scope.zip || !$scope.city) {
             window.alert('FILL OUT ALL FORMS');
@@ -29,6 +29,7 @@ angular.module('recommenuCmsApp')
                      console.log(data);
                      menu.menus = data;
                      menu.loadedMenu = true;
+                     $location.path('/user/');
                   }, 
                   function (err) {
                      console.log(err);

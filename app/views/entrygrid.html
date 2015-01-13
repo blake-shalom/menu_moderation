@@ -14,9 +14,7 @@
          <p>{{section.description}}</p>
          <p ng-show="section.annotation">* - {{section.annotation}}</p>
          <div>
-            <p>Small - $5</p>
-            <p>Small - $5</p>
-            <p>Small - $5</p>
+            <p ng-repeat="pricing in section.section_prices">{{pricing.text}} {{pricing.price}}</p>
          </div>
       </div>
       <div class="col-md-3">

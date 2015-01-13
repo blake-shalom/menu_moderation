@@ -38,9 +38,9 @@
           <p class="col-md-3">Price</p>
           <p class="col-md-5">Size or Description</p>
        </div>
-       <div class='row' ng-repeat="pricing in section.section_prices">
+       <div class='row' ng-repeat="pricing in section_prices">
           <input class="col-md-3" type="text" placeholder="$0.00" ng-model="pricing.price">
-          <input class="col-md-5 left10" type="text" ng-model="pricing.description" ng-disabled="pricing.price == ''">
+          <input class="col-md-5 left10" type="text" ng-model="pricing.text" ng-disabled="pricing.price == ''">
           <div ng-hide="$index==0" class="btn btn-danger col-md-1" ng-click="removePricing($index)">-</div>
        </div>
        <div class="row">

@@ -80,7 +80,7 @@ angular.module('recommenuCmsApp')
                         console.log(err);
                      });
                },
-               function(err){
+               function (err){
                   console.log(err);
                   window.alert('Server ERROR!');
                }

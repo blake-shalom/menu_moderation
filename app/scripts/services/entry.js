@@ -8,7 +8,7 @@
  * Factory in the recommenuCmsApp.
  */
 angular.module('recommenuCmsApp')
-   .factory('entry', function ($q, Restangular, slider) {
+   .factory('entry', function ($q, Restangular, slider, entryPricing) {
        // Service logic
        // ...
       var entryEndpoint = Restangular.all('entries');
@@ -18,6 +18,7 @@ angular.module('recommenuCmsApp')
          restangularizeEntries: function(entries) {
             for (var i in entries){
                entries[i].slider_templates = slider.restangularizeSliders(entries[i].slider_templates);
+               entries[i].entry_prices = entryPricing.restangularizeEntryPricing(entries[i].entry_prices);
             }
             return Restangular.restangularizeCollection(null,entries,'entries'); 
          },

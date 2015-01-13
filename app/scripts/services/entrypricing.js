@@ -12,7 +12,7 @@ angular.module('recommenuCmsApp')
       // Service logic
       // ...
 
-      var entryPriceEndpoint = Restangular.all('entry_prices/');
+      var entryPriceEndpoint = Restangular.all('entry_prices');
 
        // Public API here
       return {
@@ -25,6 +25,15 @@ angular.module('recommenuCmsApp')
                promises.push(deffered.promise);
             }
             return $q.all(promises);
+         },
+         postEntryPrice: function (entryPrice) {
+            return entryPriceEndpoint.post(entryPrice);
+         },
+         deleteEntryPrice: function (entryPrice) {
+            return entryPrice.remove();
+         },
+         restangularizeEntryPricing: function (entryPricing) {
+            return Restangular.restangularizeCollection(null, entryPricing, 'entry_prices');
          }
       };
    });

@@ -34,18 +34,18 @@
         </div>
     </div>
     <div ng-hide="hasExtraPricing=='No'">
-       <div class="row">
-          <p class="col-md-3">Price</p>
-          <p class="col-md-5">Size or Description</p>
-       </div>
-       <div class='row' ng-repeat="pricing in section_prices">
-          <input class="col-md-3" type="text" placeholder="$0.00" ng-model="pricing.price">
-          <input class="col-md-5 left10" type="text" ng-model="pricing.text" ng-disabled="pricing.price == ''">
-          <div ng-hide="$index==0" class="btn btn-danger col-md-1" ng-click="removePricing($index)">-</div>
-       </div>
-       <div class="row">
+      <div class="row">
+        <p class="col-md-3">Price</p>
+        <p class="col-md-5">Size or Description</p>
+      </div>
+      <div class='row' ng-repeat="pricing in section_prices">
+        <input class="col-md-3" type="text" placeholder="$0.00" ng-model="pricing.price">
+        <input class="col-md-5 left10" type="text" ng-model="pricing.text" ng-disabled="pricing.price == ''">
+        <div ng-hide="$index==0" class="btn btn-danger col-md-1" ng-click="removePricing($index)">-</div>
+      </div>
+      <div class="row">
           <div class="btn btn-black col-md-8 top15" ng-click="addExtraPricing()">+ ADD NEW PRICING</div>
-       </div>
+      </div>
     </div>
   </div>
 </div>

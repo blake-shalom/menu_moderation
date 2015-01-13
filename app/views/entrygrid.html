@@ -70,7 +70,14 @@
                <textarea type="text" class="form-control" ng-model="entry.description" rows="4"></textarea>
             </div>
             <h5>Price</h5>
-            <input type="text" class="form-control" ng-model="entry.price">
+            <div class='row' ng-repeat="pricing in entry.entry_prices">
+              <input class="col-md-3" type="text" placeholder="$0.00" ng-model="pricing.price">
+              <input class="col-md-5 left10" type="text" ng-model="pricing.text" ng-disabled="pricing.price == ''">
+              <div ng-hide="$index==0" class="btn btn-danger col-md-1" ng-click="removePricing(entry, pricing, $index)">-</div>
+            </div>            
+            <div class="row">
+               <div class="btn btn-black col-md-8 top15 left10" ng-click="addExtraPricing(entry)">+ ADD NEW PRICING</div>
+            </div>
             <div ng-hide="activeTemplate=='oneLiner'">
                <h5>Image</h5>
                <div flow-init="{singleFile:true}">

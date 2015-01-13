@@ -8,7 +8,7 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-   .controller('EntrygridCtrl', function ($q, $scope, section, entry, slider, auth) {
+   .controller('EntrygridCtrl', function ($q, $scope, section, entry, slider, auth, entryPricing) {
       $scope.$watch(function() {
          return section.activeSection;
       }, function (newValue) {
@@ -94,6 +94,29 @@ angular.module('recommenuCmsApp')
             function(err) {
                console.log(err);
                window.alert('Server ERROR!');
+            });
+      };
+      $scope.addExtraPricing = function(curEntry) {
+         entryPricing.postEntryPrice({
+            text: ' ',
+            price: ' ',
+            entry: curEntry.url
+         }).then(
+            function (data) {
+               console.log(data);
+               curEntry.entry_prices.push(data);
+            },
+            function (err) {
+               console.log(err);
+            });
+      };
+      $scope.removePricing = function(curEntry, dPricing, index) {
+         entryPricing.deleteEntryPrice(dPricing).then(
+            function (){
+               curEntry.entry_prices.splice(index, 1);
+            },
+            function (err){
+               console.log(err);
             });
       };
    });

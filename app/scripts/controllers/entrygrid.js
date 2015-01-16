@@ -27,6 +27,9 @@ angular.module('recommenuCmsApp')
       $scope.isEditingItems = false;
       
       $scope.saveItems = function() {
+         for (var i = $scope.section.entries.length - 1; i >= 0; i--) {
+            $scope.section.entries[i].order = i + 1;
+         }
          entry.saveAllEntries($scope.section.entries).then(
             function(){
                console.log('Success!');

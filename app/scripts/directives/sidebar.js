@@ -22,6 +22,7 @@ angular.module('recommenuCmsApp')
 
       $scope.menus = [];
       $scope.loadedMenu = menu.loadedMenu;
+      $scope.count = 0;
       
       $scope.addMenu = function() {
          menu.isAddingMenu= true; 
@@ -41,6 +42,27 @@ angular.module('recommenuCmsApp')
       $scope.editNewSection = function() {
          $location.path( '/sections/' );
          section.activeSection = null;         
+      };
+      $scope.sectionArranged = function() {
+         var hasChanged = false;
+         for (var i = $scope.menus[0].sections.length - 1; i >= 0; i--) {
+            if ($scope.menus[0].sections[i].order !== i + 1){
+               hasChanged = true;
+            }
+         }
+         $scope.hasChanged = hasChanged;
+      };
+      $scope.saveOrderedChanges = function() {
+         for (var i = $scope.menus[0].sections.length - 1; i >= 0; i--) {
+            $scope.menus[0].sections[i].order = i+1;
+         }
+         section.saveAllSections($scope.menus[0].sections).then(
+            function () {
+               console.log('success!!!');
+            },
+            function (err){
+               console.log(err);
+            });
       };
    })
    .directive('sidebar', function () {

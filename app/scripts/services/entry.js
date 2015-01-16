@@ -37,8 +37,10 @@ angular.module('recommenuCmsApp')
          saveAllEntries: function(entries){
             var promises = [];
             for (var i = 0; i < entries.length; i++){
+               console.log(entries[i]);
                var deffered  = $q.defer();
-               entries[i].patch().then(deffered.resolve,deffered.reject);
+               // entries[i].patch().then(deffered.resolve,deffered.reject);
+               entries[i].put().then(function(data){console.log(data)},deffered.reject);
                promises.push(deffered.promise);
             }
             return $q.all(promises);

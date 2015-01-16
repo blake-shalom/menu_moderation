@@ -8,7 +8,7 @@
  * Factory in the recommenuCmsApp.
  */
 angular.module('recommenuCmsApp')
-  .factory('section', function ($http, Restangular) {
+  .factory('section', function ($http, $q, Restangular) {
       // Service logic
       // Public API here
       var sectionEndpoint = Restangular.all('sections');
@@ -29,6 +29,17 @@ angular.module('recommenuCmsApp')
          },
          deleteSection: function(section) {
             return section.remove();
+         },
+         saveAllSections: function(sections) {
+            var promises = [];
+            for (var i = 0; i < sections.length; i++){
+               console.log(sections[i]);
+               var deffered  = $q.defer();
+               // sections[i].patch().then(deffered.resolve,deffered.reject);
+               sections[i].put().then(function(data){console.log(data)},deffered.reject);
+               promises.push(deffered.promise);
+            }
+            return $q.all(promises);
          }
       };
    });

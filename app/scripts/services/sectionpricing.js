@@ -12,7 +12,7 @@ angular.module('recommenuCmsApp')
       // Service logic
       // ...
 
-      var sectionPriceEndpoint = Restangular.all('section_prices/');
+      var sectionPriceEndpoint = Restangular.all('section_prices');
 
       // Public API here
       return {
@@ -25,6 +25,9 @@ angular.module('recommenuCmsApp')
                promises.push(deffered.promise);
             }
             return $q.all(promises);
+         },
+         restangularizeSectionPricing: function (sectionPricing) {
+            return Restangular.restangularizeCollection(null, sectionPricing, 'section_prices');
          }
       };
    });

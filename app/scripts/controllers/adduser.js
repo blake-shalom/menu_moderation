@@ -10,7 +10,7 @@
 angular.module('recommenuCmsApp')
    .controller('AdduserCtrl', function ($scope, $location, user) {
       $scope.createUser = function () {
-         if (!$scope.fName || !$scope.lName || !$scope.email || !$scope.isMale || !$scope.password || !$scope.username) {
+         if (!$scope.fName || !$scope.lName || !$scope.email || !$scope.password || !$scope.username) {
             window.alert('FILL OUT ALL FORMS');
          }
          else {

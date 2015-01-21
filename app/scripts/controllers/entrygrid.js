@@ -82,6 +82,7 @@ angular.module('recommenuCmsApp')
             function (data){
                $scope.section.entries.push(data);
                console.log(data);
+               $scope.addExtraPricing(data);
             },
             function (err){
                console.log(err);
@@ -122,4 +123,5 @@ angular.module('recommenuCmsApp')
                console.log(err);
             });
       };
+      encodeImage
    });

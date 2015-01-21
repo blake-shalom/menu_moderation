@@ -10,7 +10,7 @@
 angular.module('recommenuCmsApp')
    .controller('AddcompanyCtrl', function ($scope, $location, client, menu) {
       $scope.createCompany = function() {
-         if (!$scope.url || !$scope.name || !$scope.contact || !$scope.address || !$scope.zip || !$scope.city) {
+         if (!$scope.url || !$scope.name || !$scope.contact || !$scope.address || !$scope.zip || !$scope.city || !$scope.menuUrl) {
             window.alert('FILL OUT ALL FORMS');
          }
          else {
@@ -20,7 +20,8 @@ angular.module('recommenuCmsApp')
                city: $scope.city,
                contact_name: $scope.contact,
                zip_code: $scope.zip,
-               address1: $scope.address
+               address1: $scope.address,
+               menu_url: $scope.menuUrl
             }).then(
             function (data){
                client.clients.push(data);

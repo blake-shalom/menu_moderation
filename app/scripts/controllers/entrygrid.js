@@ -123,5 +123,11 @@ angular.module('recommenuCmsApp')
                console.log(err);
             });
       };
-      encodeImage
+      $scope.encodeImage = function(curEntry, file) {
+         curEntry.image = window.btoa(file);
+         console.log('Finished encoding');
+      };
+      $scope.$on('flow::fileAdded', function (event, $flow, flowFile) {
+         console.log('urm?');
+      });
    });

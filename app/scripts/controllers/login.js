@@ -30,7 +30,7 @@ angular.module('recommenuCmsApp')
          // if (username !== undefined && password !== undefined) {
          //    $scope.logging = 'Connecting...';
             // auth.login(username, password).then(
-            auth.login('bellingham', 'bellingham').then(
+            auth.login('burger_bob', 'Burgers.12345').then(
                function(data){
                   auth.registerToken(data.token);
                   client.getCompanies().then(

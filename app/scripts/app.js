@@ -30,7 +30,7 @@ angular
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
     /* Restangular Config */
-    RestangularProvider.setBaseUrl('http://recommenu-staging-api.herokuapp.com');
+    RestangularProvider.setBaseUrl('http://recommenu-dev-api.herokuapp.com');
     RestangularProvider.configuration.requestSuffix = '&';
     RestangularProvider.setRequestSuffix('/');
     // add a response intereceptor

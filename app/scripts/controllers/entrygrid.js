@@ -123,11 +123,19 @@ angular.module('recommenuCmsApp')
                console.log(err);
             });
       };
-      $scope.encodeImage = function(curEntry, file) {
-         curEntry.image = window.btoa(file);
-         console.log('Finished encoding');
+      $scope.encode = {
+         encodeImage: function ($file, entry) {
+            var reader = new FileReader();
+            reader.readAsDataURL($file.file);
+            reader.onloadend = function () {
+               console.log(reader.result);
+               var baseEncoded = reader.result.slice(reader.result.indexOf('base64,') + 7);
+               entry.image = baseEncoded;
+               console.log(entry.image);
+            };
+         },
+         errorUploading: function ($file, $message) {
+            console.log($file, $message);
+         }
       };
-      $scope.$on('flow::fileAdded', function (event, $flow, flowFile) {
-         console.log('urm?');
-      });
    });

@@ -81,7 +81,7 @@
             </div>
             <div ng-hide="activeTemplate=='oneLiner'">
                <h5>Image</h5>
-               <div flow-init="{singleFile:true}" flow-file-added="fileAdded">
+               <div flow-init="{singleFile:true}" flow-files-submitted="$flow.upload()" flow-file-success="encode.encodeImage($file, entry)" flow-file-error="encode.errorUploading($file, $message)">
                   <div class="drop-box" flow-drop flow-drag-enter="style={background: green}" flow-drag-leave="style={}" ng-style="style">
                      <div ng-hide="entry.image || $flow.files.length>0">
                         <div class="btn" flow-btn>Upload File</div>

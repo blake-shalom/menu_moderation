@@ -39,7 +39,7 @@ angular.module('recommenuCmsApp')
             for (var i = 0; i < entries.length; i++){
                console.log(entries[i]);
                var deffered  = $q.defer();
-               entries[i].patch().then(deffered.resolve,deffered.reject);
+               entries[i].put().then(deffered.resolve,deffered.reject);
                promises.push(deffered.promise);
             }
             return $q.all(promises);

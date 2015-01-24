@@ -1,0 +1,19 @@
+<div class="sidenav" ng-controller="sidebarCtrl" ng-cloak ng-hide="!loadedMenu"> <section id="menu-sidebar"> <div ng-show="menus.length==0" ng-click="addMenu()" class="btn btn-success"> + Add Menu </div> <div accordion ng-cloak close-others="true" ng-show="menus.length!=0"> <div ng-repeat="menu in menus"> <!-- Accordion logic BELOW --> <!--         <div accordion-group is-open="true">
+          <accordion-heading class="menu-head">
+            <p>{{menu.name}}</p>
+          </accordion-heading>
+          <div ng-repeat="section in menu.sections" data-drop="true" ng-model="menu.sections" jqyoui-droppable="{index: {{$index}}}">
+            <div class="grab row" data-drag="true" ng-model="menu.sections" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}" ng-mouseover="showButton=true" ng-mouseleave="showButton=false">
+              <p class="col-md-6">{{section.name}}</p>
+              <div class="btn col-md-3" ng-show="showButton" ng-click="loadActiveSection(section)">E</div>
+              <div class="btn col-md-3" ng-show="showButton">M</div>
+            </div>
+          </div>
+          <div class="row" ng-hide="!isCreatingSection" ng-mouseover="showEditNew=true" ng-mouseleave="showEditNew=false">
+            <p class="col-md-9">New Section</p>
+            <div class="btn col-md-3" ng-show="showEditNew" ng-click="editNewSection()">E</div>
+          </div>
+          <div class="btn add-btn row" ng-click="addSection()" ng-hide="isCreatingSection"> 
+            <strong class="col-md-2">+</strong> <p class="col-md-8">Add Section</p>
+         </div>
+        </div> --> <div class="menu-head"> <p>{{menu.name}}</p> <p>{{hasChanged}}</p> </div> <div ng-show="hasChanged"> <div class="btn btn-success" ng-click="saveOrderedChanges()">Save All Changes</div> </div> <div ng-repeat="section in menu.sections" data-drop="true" ng-model="menu.sections" jqyoui-droppable="{index:{{$index}},onDrop:sectionArranged()}" class="left10 top10"> <div class="grab row" data-drag="true" ng-model="menu.sections" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}" ng-mouseover="showButton=true" ng-mouseleave="showButton=false"> <p class="col-md-6">{{section.name}}</p> <p>{{section.order}}</p> <div class="btn col-md-2 btn-small" ng-show="showButton" ng-click="loadActiveSection(section)">E</div> </div> </div> <div class="row" ng-hide="!isCreatingSection" ng-mouseover="showEditNew=true" ng-mouseleave="showEditNew=false"> <p class="col-md-9">New Section</p> <div class="btn col-md-3" ng-show="showEditNew" ng-click="editNewSection()">E</div> </div> <div class="btn add-btn row" ng-click="addSection()" ng-hide="isCreatingSection"> <strong class="col-md-2">+</strong> <p class="col-md-8">Add Section</p> </div> </div> </div> </section> </div>

@@ -1,0 +1,11 @@
+<!doctype html> <html class="no-js"> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.b5bdd6bb.css"> <link rel="stylesheet" href="styles/main.3b648334.css">  <body ng-app="recommenuCmsApp" flow-prevent-drop> <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]--> <!-- Add your site or application content here --> <div class="container"> <!-- HEADER START --> <div class="header" ng-controller="HeaderCtrl"> <ul class="nav nav-pills pull-right"> <li ng-cloak> <div class="btn" ng-show="needsLogout" ng-click="logout()">Log Out</div> </li> </ul> <h3 class="text-muted">Recommenu Menu Manager</h3> </div> <!-- HEADER END --> <!-- SIDENAV START --> <sidebar></sidebar> <!-- END SIDENAV --> <div ng-view="" autoscroll></div> <!-- FOOTER VIEW START --> <div class="footer"> <p><span class="glyphicon glyphicon-heart"></span> from Recommenu</p> </div> </div> <!-- FOOTER VIEW END --> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');</script> <!--[if lt IE 9]>
+    <script src="scripts/oldieshim.76f279db.js"></script>
+    <![endif]--> <script src="scripts/vendor.2759f988.js"></script> <script src="scripts/scripts.f2bbade5.js"></script>  

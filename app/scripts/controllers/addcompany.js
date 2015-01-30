@@ -8,7 +8,20 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-   .controller('AddcompanyCtrl', function ($scope, $location, client, menu) {
+   .controller('AddcompanyCtrl', function ($scope, $location, $cookies, client, menu, auth) {
+      if ($cookies.token && $cookies.token !== 'null') {
+         auth.registerToken($cookies.token);
+         client.getCompanies().then(
+            function(data){
+               auth.isLogged = true;
+               client.clients = data;
+               auth.isNotFirstTime = $cookies.isNotFirstTime || false;
+            },
+            function(err){
+               console.log(err);
+               window.alert('Server ERROR!');
+            });
+      }
       $scope.createCompany = function() {
          if (!$scope.url || !$scope.name || !$scope.contact || !$scope.address || !$scope.zip || !$scope.city || !$scope.menuUrl) {
             window.alert('FILL OUT ALL FORMS');

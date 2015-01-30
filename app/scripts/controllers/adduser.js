@@ -8,7 +8,11 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-   .controller('AdduserCtrl', function ($scope, $location, user) {
+   .controller('AdduserCtrl', function ($scope, $location, $cookies, user, auth) {
+      
+      if ($cookies.token && $cookies.token !== 'null') {
+         auth.registerToken($cookies.token);
+      }
       $scope.createUser = function () {
          if (!$scope.fName || !$scope.lName || !$scope.email || !$scope.password || !$scope.username) {
             window.alert('FILL OUT ALL FORMS');

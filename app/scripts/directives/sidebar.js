@@ -7,7 +7,7 @@
  * # sidebar
  */
 angular.module('recommenuCmsApp')
-   .controller('sidebarCtrl', function ($scope, $location, menu, section, entry) {
+   .controller('sidebarCtrl', function ($scope, $location, $cookies, menu, section, entry) {
       $scope.$watch(function() {
          return menu.loadedMenu;
       }, function(newValue) {
@@ -34,6 +34,7 @@ angular.module('recommenuCmsApp')
       };
       $scope.loadActiveSection = function(newSection) {
          $location.path( '/entries/' );
+         $cookies.activeSection = newSection;
          if (newSection.entries.route === undefined){
             newSection.entries = entry.restangularizeEntries(newSection.entries);
          }

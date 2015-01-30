@@ -24,7 +24,8 @@ angular.module('recommenuCmsApp')
       $scope.pw = ''; 
       $scope.logging = '';
       $scope.myCompany = null;
-      if ($cookies.token) {
+
+      if ($cookies.token && $cookies.token !== 'null') {
          auth.registerToken($cookies.token);
          auth.isLogged = true;
          client.getCompanies().then(
@@ -41,7 +42,6 @@ angular.module('recommenuCmsApp')
                window.alert('Server ERROR!');
             });
       }
-
 
       $scope.signIn = function(username, password) {
          // Check for missing credentials
@@ -92,11 +92,13 @@ angular.module('recommenuCmsApp')
                      menu.sections = section.restangularizeSections(menu.activeMenu.sections);
                      if (menu.activeMenu.sections.length > 0) {
                         section.activeSection = menu.activeMenu.sections[0];
+                        $cookies.activeSection = menu.activeMenu.sections[0];
                         section.activeSection.entries = entry.restangularizeEntries(section.activeSection.entries);
                         $location.path( '/entries/' );
                      }
                      else {
                         section.activeSection = null;
+                        $cookies.activeSection = null;
                         section.creatingSection = true;
                         $location.path( '/sections/');
                      }

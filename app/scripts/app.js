@@ -49,32 +49,32 @@ angular
     });
 
     $routeProvider
-      .when('/login', {
+      .when('/login/', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/entries', {
+      .when('/entries/', {
         templateUrl: 'views/entrygrid.html',
         controller: 'EntrygridCtrl'
       })
-      .when('/menus', {
+      .when('/menus/', {
         templateUrl: 'views/addmenu.html',
         controller: 'AddmenuCtrl'
       })
-      .when('/sections', {
+      .when('/sections/', {
         templateUrl: 'views/addsection.html',
         controller: 'AddsectionCtrl'
       })
-      .when('/company', {
+      .when('/company/', {
         templateUrl: 'views/addcompany.html',
         controller: 'AddcompanyCtrl'
       })
-      .when('/user', {
+      .when('/user/', {
         templateUrl: 'views/adduser.html',
         controller: 'AdduserCtrl'
       })
       .otherwise({
-        redirectTo: '/login'
+        redirectTo: '/login/'
       });
   });
   /*.run(function ($rootScope, $location, auth) {

@@ -29,8 +29,14 @@
       <!-- HEADER START -->
       <div class="header" ng-controller="HeaderCtrl">
         <ul class="nav nav-pills pull-right">
+          <li ng-cloak> 
+            <div class="btn btn-black" ng-show="needsLogout" ng-click="createUser()">Create User</div>
+          </li>
+          <li ng-cloak> 
+            <div class="btn btn-black" ng-show="needsLogout" ng-click="changeCompany()">Change Company</div>
+          </li>
           <li ng-cloak>
-            <div class="btn" ng-show="needsLogout" ng-click="logout()">Log Out</div>
+            <div class="btn btn-black" ng-show="needsLogout" ng-click="logout()">Log Out</div>
           </li>
         </ul>
         <h3 class="text-muted">Recommenu Menu Manager</h3>

@@ -8,7 +8,7 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-   .controller('AddmenuCtrl', function ($scope, $location, menu, client, section) {
+   .controller('AddmenuCtrl', function ($scope, $location, $cookies, menu, section) {
       $scope.$watch(function() {
          return menu.isAddingMenu;
       }, function(newValue) {
@@ -24,7 +24,7 @@ angular.module('recommenuCmsApp')
          else {
             menu.createMenu({
             name: $scope.title,
-            company: client.selectedClient.url,
+            company: $cookies.selectedClient.url,
             description: $scope.description,
             sections: []
          }).then (

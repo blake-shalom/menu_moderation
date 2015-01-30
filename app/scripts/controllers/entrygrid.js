@@ -8,10 +8,9 @@
  * Controller of the recommenuCmsApp
  */
 angular.module('recommenuCmsApp')
-   .controller('EntrygridCtrl', function ($q, $scope, section, entry, slider, auth, entryPricing) {
+   .controller('EntrygridCtrl', function ($q, $scope, $cookies, section, entry, slider, auth, entryPricing) {
       
       $scope.isEditingItems = false;
-      
 
       $scope.$watch(function() {
          return section.activeSection;

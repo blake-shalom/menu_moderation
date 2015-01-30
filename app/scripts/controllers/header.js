@@ -17,9 +17,17 @@ angular.module('recommenuCmsApp')
       $scope.logout = function(){
          auth.isLogged = false;
          client.selectedClient = null;
-         $location.path( '/login' );
          menu.loadedMenu = false;
          $cookies.isNotFirstTime = true;
-         $cookies.token = undefined;
+         $cookies.token = null;
+         $location.path( '/login' );
+      };
+      $scope.changeCompany = function () {
+         client.selectedClient = null;
+         menu.loadedMenu = false;
+         $location.path( '/login' );
+      };
+      $scope.createUser = function () {
+         $location.path( '/user' );
       };
    });

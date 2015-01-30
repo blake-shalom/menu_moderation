@@ -9,7 +9,45 @@
  */
 
 angular.module('recommenuCmsApp')
-   .controller('AddsectionCtrl', function ($scope, $location, section, menu, auth, sectionPricing) {
+   .controller('AddsectionCtrl', function ($scope, $location, $cookies, section, menu, auth, sectionPricing, client, entry) {
+
+      // if ($cookies.token && $cookies.selectedClient) {
+      //    auth.registerToken($cookies.token);
+      //    auth.isLogged = true;
+      //    if ($cookies.activeSection === 'null'){
+      //       section.activeSection = menu.activeMenu.sections[0];
+      //    }
+      //    else {
+      //       section.activeSection = $cookies.activeSection;
+      //    }
+
+      //    client.selectCompany($cookies.selectedClient).then(
+      //       function (data){
+      //          menu.menus = data;
+      //          menu.loadedMenu = true;
+      //          menu.activeMenu = data[0];
+      //          menu.sections = section.restangularizeSections(menu.activeMenu.sections);
+      //          if (menu.activeMenu.sections.length > 0) {
+      //             if ($cookies.activeSection === 'null'){
+      //                section.activeSection = menu.activeMenu.sections[0];
+      //             }
+      //             else {
+      //                section.activeSection = $cookies.activeSection;
+      //             }
+      //             section.activeSection.entries = entry.restangularizeEntries(section.activeSection.entries);
+      //          }
+      //          else {
+      //             section.activeSection = null;
+      //             section.creatingSection = true;
+      //          }
+      //       },
+      //       function (err){
+      //          console.log('ERROR: ', err);
+      //          window.alert('Server Error!');
+      //       });
+
+      // }
+
       $scope.$watch(function() {
          return section.activeSection;
       }, function (newValue) {

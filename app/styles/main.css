@@ -139,7 +139,12 @@ p.italic {
   padding: 10px;
   text-align: left;
   border: 1px solid #e5e5e5;
-  background-color: #F8F9F9
+  background-color: #F8F9F9;
+  min-height: 715px
+}
+
+.grid-std {
+  height: 500px;
 }
 
 .drag-cell {
@@ -152,7 +157,7 @@ p.italic {
 
 .grid-pic {
   height: 125px;
-  background: gray
+  background: white
 }
 
 .drop-box {

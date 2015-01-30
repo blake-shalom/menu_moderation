@@ -29,8 +29,8 @@ angular.module('recommenuCmsApp')
          // Check for missing credentials
          if (username !== undefined && password !== undefined) {
             $scope.logging = 'Connecting...';
-            auth.login(username, password).then(
-            // auth.login('burger_bob', 'Burgers.12345').then(
+            // auth.login(username, password).then(
+            auth.login('burger_bob', 'Burgers.12345').then(
                function(data){
                   auth.registerToken(data.token);
                   client.getCompanies().then(

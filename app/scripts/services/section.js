@@ -34,12 +34,16 @@ angular.module('recommenuCmsApp')
          },
          saveAllSections: function(sections) {
             var promises = [];
+            
             for (var i = 0; i < sections.length; i++){
                console.log(sections[i]);
                var deffered  = $q.defer();
                sections[i].put().then(deffered.resolve,deffered.reject);
+               // sections[i].put().then(function(obj){console.log(obj)},deffered.reject);
+
                promises.push(deffered.promise);
             }
+
             return $q.all(promises);
          }
       };

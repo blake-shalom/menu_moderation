@@ -9,6 +9,10 @@
  */
 angular.module('recommenuCmsApp')
    .controller('EntrygridCtrl', function ($q, $scope, section, entry, slider, auth, entryPricing) {
+      
+      $scope.isEditingItems = false;
+      
+
       $scope.$watch(function() {
          return section.activeSection;
       }, function (newValue) {
@@ -23,9 +27,6 @@ angular.module('recommenuCmsApp')
       }, function (newValue) {
          $scope.isFirst = !newValue;
       });
-
-      $scope.isEditingItems = false;
-      
       $scope.saveItems = function() {
          for (var i = $scope.section.entries.length - 1; i >= 0; i--) {
             $scope.section.entries[i].order = i + 1;

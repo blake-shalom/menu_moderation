@@ -24,6 +24,24 @@ angular.module('recommenuCmsApp')
       $scope.pw = ''; 
       $scope.logging = '';
       $scope.myCompany = null;
+      if ($cookies.token) {
+         auth.registerToken($cookies.token);
+         auth.isLogged = true;
+         client.getCompanies().then(
+            function(data){
+               auth.isLogged = true;
+               client.clients = data;
+               auth.isNotFirstTime = $cookies.isNotFirstTime || false;
+               $scope.user = '';
+               $scope.pw = ''; 
+               $scope.logging = '';
+            },
+            function(err){
+               console.log(err);
+               window.alert('Server ERROR!');
+            });
+      }
+
 
       $scope.signIn = function(username, password) {
          // Check for missing credentials
@@ -33,12 +51,12 @@ angular.module('recommenuCmsApp')
             auth.login('burger_bob', 'Burgers.12345').then(
                function(data){
                   auth.registerToken(data.token);
+                  $cookies.token = data.token;
                   client.getCompanies().then(
                      function(data){
                         auth.isLogged = true;
                         client.clients = data;
                         auth.isNotFirstTime = $cookies.isNotFirstTime || false;
-                        console.log(auth.isNotFirstTime);
                         $scope.user = '';
                         $scope.pw = ''; 
                         $scope.logging = '';

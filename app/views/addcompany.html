@@ -1,11 +1,11 @@
-<h3>New Company</h3>
+<h3 ng-show="isNewCompany">New Company</h3>
 <div class="top60">
    <h5>Company Name</h5>
-   <input type="text" class="form-control left10" ng-model="name" autofocus>
+   <input type="text" class="form-control left10" ng-model="company.name" autofocus>
    <h5>Website URL</h5>
-   <input type="text" class="form-control left10" ng-model="url">
+   <input type="text" class="form-control left10" ng-model="company.website">
    <h5>Street Address</h5>
-   <input type="text" class="form-control left10" ng-model="address">
+   <input type="text" class="form-control left10" ng-model="company.address1">
 
    <div class="row left 10">
       <h5 class="col-md-4">City</h5>
@@ -14,15 +14,26 @@
       <div class="col-md-1"></div>
       <h5 class="col-md-2">Zipcode</h5>
 
-      <input type="text" class="left10 col-md-4" ng-model="city">
+      <input type="text" class="left10 col-md-4" ng-model="company.city">
       <div class="col-md-1"></div>
-      <input type="text" class=" col-md-3" ng-model="state">
+      <input type="text" class=" col-md-3" ng-model="company.state">
       <div class="col-md-1"></div>
-      <input type="text" class=" col-md-2" ng-model="zip">
+      <input type="text" class=" col-md-2" ng-model="company.zip_code">
    </div>
    <h5>Contact Name</h5>
-   <input type="text" class="form-control left10" ng-model="contact">
+   <input type="text" class="form-control left10" ng-model="company.contact_name">
    <h5>Menu URL</h5>
-   <input type="text" class="form-control left10" ng-model="menuUrl">
-   <div class="btn btn-black top30" ng-click="createCompany()">Create Company</div>
+   <input type="text" class="form-control left10" ng-model="company.menu_url">
+   <h5>Add a company logo</h5>
+   <div flow-init="{singleFile:true}" flow-files-submitted="$flow.upload()" flow-file-success="encode.encodeImage($file, company)" flow-file-error="encode.errorUploading($file, $message)">
+      <div class="drop-box" flow-drop flow-drag-enter="style={background: green}" flow-drag-leave="style={}" ng-style="style">
+         <div>
+            <div class="btn" flow-btn>Upload File</div>
+            <p>or drop them here</p>
+         </div>
+         <img class="entry-thumb" flow-img="$flow.files[0]"/>
+      </div>
+   </div>
+   <div class="btn btn-black top30" ng-click="createCompany()" ng-show="isNewCompany">Create Company</div>
+   <div class="btn btn-black top30" ng-click="updateCompany()" ng-hide="isNewCompany">Update Company</div>
 </div>

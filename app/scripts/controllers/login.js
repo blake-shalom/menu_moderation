@@ -48,7 +48,7 @@ angular.module('recommenuCmsApp')
          if (username !== undefined && password !== undefined) {
             $scope.logging = 'Connecting...';
             // auth.login(username, password).then(
-            auth.login('burger_bob', 'Burgers.12345').then(
+            auth.login('bellingham', 'bellingham').then(
                function(data){
                   auth.registerToken(data.token);
                   $cookies.token = data.token;
@@ -114,5 +114,9 @@ angular.module('recommenuCmsApp')
          else {
             $scope.selectLog = 'Please select a client!';
          }
+      };
+      $scope.createCompany = function() {
+         $cookies.selectedClient = null;
+         $location.path('/company/');
       };
    });
